@@ -1,0 +1,439 @@
+fileFormatVersion: 2
+guid: d63aadb1fa720584d91f62dca194fdb4
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    isReadable: 0
+    streamingMipmaps: 1
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 128
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    ignorePngGamma: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  spriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 0, y: 0}
+  mosaicSpriteImportData: []
+  rigSpriteImportData:
+  - name: Upgrade_dual
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 429
+      y: 2572
+      width: 413
+      height: 416
+    spriteID: 07f074571fcb8dc4bbc7be978c2fef83
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -138, y: 570}
+  - name: Upgrade_pierce
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 429
+      y: 2996
+      width: 413
+      height: 416
+    spriteID: dd1372349567a2641afca0263deeec73
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 332, y: 993}
+  - name: Bullet_square
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 429
+      y: 3839
+      width: 127
+      height: 136
+    spriteID: 052cf95ffe86a2a479182170374eab7b
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -771, y: 3294}
+  - name: Bullet_circle
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 692
+      y: 3839
+      width: 111
+      height: 130
+    spriteID: 4ba0b141dbfa3dc499a00289b8415411
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -429, y: 3479}
+  - name: Bullet_triangle
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 564
+      y: 3839
+      width: 120
+      height: 134
+    spriteID: 50ac136185a75b94d9af454b8899ab03
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -471, y: 3302}
+  - name: Shooter_dual
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 2572
+      width: 417
+      height: 584
+    spriteID: 8f1b42e02b8b4694b8ff8dafd20aa185
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -531, y: 2491}
+  - name: Shooter_default
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 3164
+      width: 417
+      height: 582
+    spriteID: 0dfbecd83902a314598c9b38b8f64360
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -42, y: 3082}
+  - name: Enemy_triangle
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 429
+      y: 3420
+      width: 387
+      height: 411
+    spriteID: 8a930489f5192364db12fd8f9b31b702
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 63, y: 1981}
+  - name: Enemy_square
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 850
+      y: 2572
+      width: 349
+      height: 349
+    spriteID: c708ce948532ea246b6463e3071fac9d
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 593, y: 1622}
+  - name: Enemy_circle
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 3754
+      width: 322
+      height: 323
+    spriteID: f59c4f101050e294196de3598cf7c49f
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -700, y: 2802}
+  - name: background
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 1440
+      height: 2560
+    spriteID: f4d21b888a7c13d49bec82555a759ea0
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 4, y: 4}
+  platformSettings: []
+  mosaicLayers: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  importedTextureWidth: 1024
+  importedTextureHeight: 2048
+  documentSize: {x: 1440, y: 2560}
+  paperDollMode: 0
+  keepDupilcateSpriteName: 0
+  spriteCategoryList:
+    categories: []
+  textureActualWidth: 2048
+  textureActualHeight: 4096
+  spritePackingTag: 
+  resliceFromLayer: 0
+  characterMode: 1
+  mosaicPSDLayers: []
+  rigPSDLayers:
+  - name: Upgrade_dual
+    spriteName: Upgrade_dual
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 07f074571fcb8dc4bbc7be978c2fef83
+    layerID: 12
+    mosaicPosition: {x: 429, y: 2572}
+  - name: Upgrade_pierce
+    spriteName: Upgrade_pierce
+    isGroup: 0
+    parentIndex: -1
+    spriteID: dd1372349567a2641afca0263deeec73
+    layerID: 11
+    mosaicPosition: {x: 429, y: 2996}
+  - name: Bullet_square
+    spriteName: Bullet_square
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 052cf95ffe86a2a479182170374eab7b
+    layerID: 10
+    mosaicPosition: {x: 429, y: 3839}
+  - name: Bullet_circle
+    spriteName: Bullet_circle
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 4ba0b141dbfa3dc499a00289b8415411
+    layerID: 9
+    mosaicPosition: {x: 692, y: 3839}
+  - name: Bullet_triangle
+    spriteName: Bullet_triangle
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 50ac136185a75b94d9af454b8899ab03
+    layerID: 8
+    mosaicPosition: {x: 564, y: 3839}
+  - name: Shooter_dual
+    spriteName: Shooter_dual
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 8f1b42e02b8b4694b8ff8dafd20aa185
+    layerID: 7
+    mosaicPosition: {x: 4, y: 2572}
+  - name: Shooter_default
+    spriteName: Shooter_default
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 0dfbecd83902a314598c9b38b8f64360
+    layerID: 6
+    mosaicPosition: {x: 4, y: 3164}
+  - name: Enemy_triangle
+    spriteName: Enemy_triangle
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 8a930489f5192364db12fd8f9b31b702
+    layerID: 5
+    mosaicPosition: {x: 429, y: 3420}
+  - name: Enemy_square
+    spriteName: Enemy_square
+    isGroup: 0
+    parentIndex: -1
+    spriteID: c708ce948532ea246b6463e3071fac9d
+    layerID: 4
+    mosaicPosition: {x: 850, y: 2572}
+  - name: Enemy_circle
+    spriteName: Enemy_circle
+    isGroup: 0
+    parentIndex: -1
+    spriteID: f59c4f101050e294196de3598cf7c49f
+    layerID: 3
+    mosaicPosition: {x: 4, y: 3754}
+  - name: background
+    spriteName: background
+    isGroup: 0
+    parentIndex: -1
+    spriteID: f4d21b888a7c13d49bec82555a759ea0
+    layerID: 2
+    mosaicPosition: {x: 4, y: 4}
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+  generateGOHierarchy: 0
+  textureAssetName: Prot art 1 Texture
+  prefabAssetName: Prot art 1 Prefab
+  spriteLibAssetName: Prot art 1 Sprite Lib
+  secondarySpriteTextures: []
