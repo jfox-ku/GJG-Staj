@@ -59,12 +59,12 @@
     <UnityVersion>2020.1.0f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\SceneManager.cs" />
-    <Compile Include="Assets\Scripts\Shooter.cs" />
-    <Compile Include="Assets\Scripts\Interface\IShoot.cs" />
-    <Compile Include="Assets\Scriptable Objects\EnemyScriptable.cs" />
-    <Compile Include="Assets\Scripts\EnemySpawnerScript.cs" />
-    <Compile Include="Assets\Scripts\EnemyManagerScript.cs" />
+    <Compile Include="Assets\PlayerScript.cs" />
+    <Compile Include="Assets\Scriptable Objects\JumpableSO.cs" />
+    <Compile Include="Assets\Scripts\CustomSceneManager.cs" />
+    <Compile Include="Assets\JumpableScript.cs" />
+    <Compile Include="Assets\ColliderType.cs" />
+    <Compile Include="Assets\PieceCreatorScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
