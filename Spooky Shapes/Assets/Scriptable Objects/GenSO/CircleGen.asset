@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa355a4b5df86e4eaeb8ac011f121e9, type: 3}
+  m_Name: CircleGen
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 9200856735048209627, guid: 5c52363ceb8f4a143b96e95a3ee3a8ee, type: 3}
+  numToGen: 4
+  genCooldown: 1.2
+  travelTime: 2
+  nextGenCooldown: 3

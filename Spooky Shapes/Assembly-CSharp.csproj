@@ -59,12 +59,15 @@
     <UnityVersion>2020.1.0f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\PlayerScript.cs" />
+    <Compile Include="Assets\Scriptable Objects\PieceCreatorSO.cs" />
+    <Compile Include="Assets\Scripts\PlayerScript.cs" />
     <Compile Include="Assets\Scriptable Objects\JumpableSO.cs" />
     <Compile Include="Assets\Scripts\CustomSceneManager.cs" />
-    <Compile Include="Assets\JumpableScript.cs" />
-    <Compile Include="Assets\ColliderType.cs" />
-    <Compile Include="Assets\PieceCreatorScript.cs" />
+    <Compile Include="Assets\Scripts\JumpableScript.cs" />
+    <Compile Include="Assets\Scripts\PieceCreatorScript.cs" />
+    <Compile Include="Assets\Scripts\InactiveCollector.cs" />
+    <Compile Include="Assets\Scripts\ColliderType.cs" />
+    <Compile Include="Assets\BackgroundParallax.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -678,6 +681,12 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>Library\ScriptAssemblies\Cinemachine.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>
