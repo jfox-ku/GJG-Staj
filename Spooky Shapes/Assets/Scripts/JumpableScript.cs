@@ -10,9 +10,10 @@ public class JumpableScript : MonoBehaviour
     public float jumpForce = 0;
     private Rigidbody2D rb;
 
-    public float jumpCooldown = 0.2f;
+    public float jumpCooldown = 0.01f;
     public bool allowJump = true;
-    
+
+    public ParticleSystem PartSys;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +33,6 @@ public class JumpableScript : MonoBehaviour
 
     public Vector2 getJumpForce() {
         var ret = Vector2.up * jumpForce;
-        if (!allowJump) return Vector2.zero;
         return ret;
     }
 
@@ -40,12 +40,19 @@ public class JumpableScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Player")) {
+            var partSys = Instantiate(PartSys, this.transform.position ,Quaternion.identity,this.transform.parent);
+            partSys.Play();
 
-            gameObject.SetActive(false);
-            gameObject.transform.SetParent(FindObjectOfType<InactiveCollector>().transform);
+            //gameObject.SetActive(false);
+            //Will use this when pooling
+            //gameObject.transform.SetParent(FindObjectOfType<InactiveCollector>().transform);
             return;
         }
         StartCoroutine(waitForJump());
+    }
+
+    public void Disable() {
+        gameObject.SetActive(false);
     }
 
     private IEnumerator waitForJump() {

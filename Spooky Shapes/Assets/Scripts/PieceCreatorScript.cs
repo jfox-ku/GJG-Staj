@@ -6,25 +6,25 @@ public class PieceCreatorScript : MonoBehaviour
 {
     public PieceCreatorSO asset;
 
-    private GameObject prefab1;
+    private GameObject toSpawn;
     public Transform target;
     private int numToGenerate;
     private float generateCooldown;
     private float nextGenCooldown;
     private float speed;
-    public bool doesGenerate = false;
+    private bool doesGenerate = false;
 
     // Start is called before the first frame update
 
-    private void Start() {
+    public void startAsset() {
         if (asset != null) {
-            prefab1 = asset.prefab;
+            toSpawn = asset.prefab;
             numToGenerate = asset.numToGen;
             generateCooldown = asset.genCooldown;
             speed = asset.travelTime;
             nextGenCooldown = asset.nextGenCooldown;
             doesGenerate = true;
-            StartCoroutine(Produce());
+            
         }
     }
 
@@ -33,6 +33,14 @@ public class PieceCreatorScript : MonoBehaviour
 
     }
 
+    public void SetToSpawn(GameObject JumpablePrefab) {
+        toSpawn = JumpablePrefab;
+        
+    }
+
+    public void startProducing() {
+        StartCoroutine(Produce());
+    }
 
     private IEnumerator Produce() {
         doesGenerate = true;
@@ -47,10 +55,10 @@ public class PieceCreatorScript : MonoBehaviour
 
 
     private IEnumerator Generator(int num, float cooldown, float speed) {
-        GameObject toSpawn = prefab1;
+        GameObject sp = toSpawn;
         for (int i = 0; i< num; i++) {
             //Debug.Log("Object generated at " + Time.time);
-            var obj = Instantiate(toSpawn, this.transform);
+            var obj = Instantiate(sp, this.transform);
             StartCoroutine(MovePiece(obj, speed));
             yield return new WaitForSeconds(cooldown);
         }

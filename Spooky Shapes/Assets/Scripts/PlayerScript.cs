@@ -11,27 +11,21 @@ public class PlayerScript : MonoBehaviour
     public List<Collider2D> Colliders;
 
     [Header("Line Stuff")]
-    [SerializeField] private List<Vector2> drawPos; 
-    private LineRenderer lineRenderer;
-    public Canvas playerLineCanvas;
-    public Material lineMat;
-    public float maxLineLength;
-    public Gradient lineGrad;
+    public DragLineDrawer dragDrawer;
 
-    
-    [Header("Details")]
-    public Vector2 vel;
-    public float angularVel;
 
     [Header("Drag Controls")]
     public Vector3 dragStartPos;
     public bool canDrag = true;
     public float throwMultiplier = 12f;
+    public float dragSlowMultiplier = 19f / 20f;
 
 
     [Header("Collision stuff")]
     private float WallHitCD = 0.1f;
     private float WallHitCDKeeper;
+
+    public ParticleSystem PartSys;
 
     //this is bad
     public Sprite tri;
@@ -66,17 +60,17 @@ public class PlayerScript : MonoBehaviour
                 dragStartPos = touch.position;
                 rb.drag = 70f;
                 StartCoroutine(dragLerper(baseDrag));
-                DrawLine(dragStartPos,dragStartPos);
+                dragDrawer.DrawLine(dragStartPos,dragStartPos);
                // Debug.Log("Touch began at " + dragStartPos);
             } else if (touch.phase == TouchPhase.Moved) {
 
                 var dir = (Vector3)clampDown(touch.position - (Vector2)dragStartPos);
-                UpdateLine(transform.position,transform.position+dir / 200f);
+                dragDrawer.UpdateLine(transform.position,transform.position+dir / 200f);
 
             } else if (touch.phase == TouchPhase.Stationary) {
 
                 var dir = (Vector3)clampDown(touch.position - (Vector2)dragStartPos);
-                UpdateLine(transform.position, transform.position + dir / 200f);
+                dragDrawer.UpdateLine(transform.position, transform.position + dir / 200f);
                 
 
 
@@ -93,7 +87,7 @@ public class PlayerScript : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x,0);
                 rb.AddForce((Vector2)dir.normalized*throwMultiplier,ForceMode2D.Impulse);
                 canDrag = false;
-                DestroyLine();
+                dragDrawer.DestroyLine();
             }
 
 
@@ -143,7 +137,7 @@ public class PlayerScript : MonoBehaviour
     }
     #endregion changestuff
 
-
+    public float speedGainOnJump = 1.2f;
     private void OnCollisionEnter2D(Collision2D collision) {
         var obje = collision.gameObject;
         if (obje.CompareTag("Jumpable")) {
@@ -154,9 +148,11 @@ public class PlayerScript : MonoBehaviour
             int jumpMultiplier = 1;
             if (jumpable.tip == PlayerType) jumpMultiplier = 2;
             changeType(jumpable.tip);
-            rb.velocity = new Vector2(rb.velocity.x/2,0);
+            rb.velocity = new Vector2(rb.velocity.x*speedGainOnJump,0);
             //rb.angularVelocity = 45f;
+            rb.drag = baseDrag;
             rb.AddForce(jumpable.getJumpForce() * jumpMultiplier);
+            jumpable.Disable();
 
         }else if (obje.CompareTag("Wall")) {
             if(WallHitCDKeeper == 0) {
@@ -171,13 +167,24 @@ public class PlayerScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         var obje = collision.gameObject;
         if (obje.CompareTag("Killzone")) {
+            if ((int)transform.position.y > PlayerPrefs.GetInt("Score")) PlayerPrefs.SetInt("Score", (int)transform.position.y);
             CustomSceneManager.Instance.loadScene(0);
+        }else if (obje.CompareTag("LoadNextZone")) {
+            //Debug.Log("Next Zone Triggered");
+            var rm = FindObjectOfType<RunManagerScript>();
+            rm.LoadZoneTrigger(obje);
+            
+
         }
     }
 
-    private void FixedUpdate() {
-        vel = rb.velocity;
-        angularVel = rb.angularVelocity;
+    private void OnTriggerStay2D(Collider2D collision) {
+        var obje = collision.gameObject;
+        if (obje.CompareTag("Upzone")) {
+            //Can this get component call be avoided? Is it bad?
+            obje.GetComponent<UpzoneScript>().MoveUpConfiner();
+        }
+
     }
 
 
@@ -189,62 +196,16 @@ public class PlayerScript : MonoBehaviour
         WallHitCDKeeper = WallHitCD;
     }
     
+
+    //Slow down player at the start of dragging. Increase rigidbody linear drag.
     private IEnumerator dragLerper(float target) {
         rb.drag = 100f;
         while(rb.drag > target) {
-            rb.drag = rb.drag * 19 / 20;
+            rb.drag = rb.drag * dragSlowMultiplier;
             yield return new WaitForEndOfFrame();
         }
         rb.drag = target;
         
-    }
-
-
-    #region linestuff
-    private void DrawLine(Vector2 start, Vector2 end) {
-        //Debug.Log("Drawing line " + start + " => " + end);
-
-        if((end-start).magnitude > maxLineLength) {
-            end = start + (start - end).normalized * maxLineLength;
-        }
-
-        Vector3[] arr = {start, end };
-        if (lineRenderer == null) {
-            GameObject lineObject = new GameObject();
-            lineObject.transform.SetParent(playerLineCanvas.transform);
-            this.lineRenderer = lineObject.AddComponent<LineRenderer>();
-            
-        }
-        
-        this.lineRenderer.startWidth = 0.15f;
-        this.lineRenderer.endWidth = 0.05f;
-        this.lineRenderer.positionCount = 2;
-        lineRenderer.material = lineMat;
-        this.lineRenderer.SetPositions(arr);
-        this.lineRenderer.colorGradient = lineGrad;
-        
-
-    }
-
-    private void UpdateLine(Vector2 start, Vector2 end) {
-        //Debug.Log("Updating line " + start + " => " + end);
-        if ((start - end).magnitude > maxLineLength) {
-            end = start + (end - start).normalized * maxLineLength;
-        }
-        if (this.lineRenderer == null) {
-            Debug.Log("Update line called no line renderer.");
-            return;
-        }
-        Vector3[] arr = { start, end };
-        this.lineRenderer.SetPositions(arr);
-
-    }
-
-    private void DestroyLine() {
-        if (lineRenderer != null) {
-            Destroy(lineRenderer.gameObject);
-        }
-
     }
 
 
@@ -253,5 +214,5 @@ public class PlayerScript : MonoBehaviour
         return dir;
     }
 
-    #endregion linestuff
+    
 }
