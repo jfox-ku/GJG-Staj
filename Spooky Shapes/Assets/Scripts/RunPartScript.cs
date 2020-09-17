@@ -20,7 +20,7 @@ public class RunPartScript : MonoBehaviour
     {
         id = count;
         count++;
-        background.color = Color.Lerp(set.BGstartColor, set.BGendColor, Mathf.Min(transform.position.y/set.colorSwapDistanceMax,1));
+        
         
     }
 
@@ -47,6 +47,16 @@ public class RunPartScript : MonoBehaviour
     }
 
     public float getHeight() {
-        return Vector2.Distance(TOP.position,BOT.position);
+        return TOP.position.y - BOT.position.y;
     }
+
+    public float GetSpawnHeight() {
+        return transform.position.y - BOT.position.y;
+    }
+
+    public Vector2 GetTopPos() {
+       // Debug.Log("Top pos:"+ TOP.position);
+        return TOP.position;
+    }
+
 }

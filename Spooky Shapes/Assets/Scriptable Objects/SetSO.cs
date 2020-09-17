@@ -7,7 +7,7 @@ public class SetSO : ScriptableObject
 {
     //public List<GameObject> CreatorsLst;
     public List<GameObject> JumpablesLst;
-    public List<GameObject> ItemsList;
+    public List<ItemScript> ItemsList;
 
     public Color BGstartColor;
     public Color BGendColor;
@@ -20,9 +20,13 @@ public class SetSO : ScriptableObject
 
     }
 
-    public GameObject getRandomItem() {
+    public ItemScript getRandomItem() {
         return ItemsList[Random.Range(0, ItemsList.Count)];
     }
 
-
+    public void ResetItemCount() {
+        foreach(ItemScript item in ItemsList) {
+            item.count = 0;
+        }
+    }
 }

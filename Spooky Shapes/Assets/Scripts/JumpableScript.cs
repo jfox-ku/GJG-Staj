@@ -48,24 +48,13 @@ public class JumpableScript : MonoBehaviour
             //gameObject.transform.SetParent(FindObjectOfType<InactiveCollector>().transform);
             return;
         }
-        StartCoroutine(waitForJump());
+        
     }
 
     public void Disable() {
         gameObject.SetActive(false);
     }
 
-    private IEnumerator waitForJump() {
-
-        yield return new WaitForEndOfFrame();
-        var cooldown = jumpCooldown;
-        allowJump = false;
-        while(cooldown > 0) {
-            cooldown -= Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
-        allowJump = true;
-    }
 
 
 

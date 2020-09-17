@@ -9,6 +9,7 @@ public class RunManagerScript : MonoBehaviour
     //Not sure yet if this should be a singleton
     //public static RunManagerScript _instance;
 
+    public SetSO set;
     private GameObject player;
     public GameObject testingPiece;
 
@@ -52,6 +53,7 @@ public class RunManagerScript : MonoBehaviour
         CVM.Follow = player.transform;
 
         loadedRunParts = new Queue<GameObject>();
+        set.ResetItemCount();
 
         toLoadIndex = 0;
         SpawnPart();
@@ -61,25 +63,34 @@ public class RunManagerScript : MonoBehaviour
     }
 
 
+    //Also despawns pervious parts
    private void SpawnPart() {
-        if(totalLoaded >= RunParts.Count) {
+        if(totalLoaded >= 6) {
             //Debug.Log("Loaded all Parts. Now getting random parts.");
             //allowLoad = false;
             toLoadIndex = Random.Range(0, RunParts.Count);
+
+
+            if(player.transform.position.y > loadedRunParts.Peek().GetComponent<RunPartScript>().GetTopPos().y)
             Destroy(loadedRunParts.Dequeue());
         }
-        
+        if(toLoadIndex >= RunParts.Count) toLoadIndex = Random.Range(0, RunParts.Count);
         RunPartSO sp = RunParts[toLoadIndex];
         
-        Vector2 nextPos = spawnPos;
-        var part = Instantiate(sp.runPartPrefab, nextPos, Quaternion.identity);
+        
+        var part = Instantiate(sp.runPartPrefab, spawnPos, Quaternion.identity);
         var partScript = part.GetComponent<RunPartScript>();
+        part.transform.position += new Vector3(0, partScript.GetSpawnHeight(),0) ;
         loadedRunParts.Enqueue(part);
         partScript.SetUpCreators();
 
+        var reward = part.GetComponent<RewardPartScript>();
+        if (reward != null) {
+            reward.SetUpItems();
+        }
 
 
-        spawnPos.y += partScript.getHeight();
+        spawnPos.y = partScript.GetTopPos().y;
         toLoadIndex++;
         totalLoaded++;
     }
@@ -100,6 +111,7 @@ public class RunManagerScript : MonoBehaviour
     public void LoadZoneTrigger(GameObject obje) {
         var parentRunPart = obje.transform.parent.GetComponent<RunPartScript>();
         //Debug.Log("Load Trigger ID: " + parentRunPart.id);
+        //If different Part ID, load new part
         LoadNextPart(parentRunPart.id);
 
 

@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scriptable Objects\PieceCreatorSO.cs" />
     <Compile Include="Assets\Scripts\PlayerScript.cs" />
     <Compile Include="Assets\Scripts\RunManagerScript.cs" />
+    <Compile Include="Assets\Scripts\ItemS\ItemGiverScript.cs" />
     <Compile Include="Assets\Scripts\DragLineDrawer.cs" />
     <Compile Include="Assets\Scriptable Objects\JumpableSO.cs" />
     <Compile Include="Assets\Scripts\CustomSceneManager.cs" />
@@ -72,13 +73,16 @@
     <Compile Include="Assets\Scripts\MainMenuScript.cs" />
     <Compile Include="Assets\Scripts\RunPartScript.cs" />
     <Compile Include="Assets\Scripts\UIScoreScript.cs" />
+    <Compile Include="Assets\Scripts\ItemS\ItemScript.cs" />
     <Compile Include="Assets\Scriptable Objects\RunPartSO.cs" />
     <Compile Include="Assets\Scripts\ColliderType.cs" />
     <Compile Include="Assets\Scriptable Objects\SetSO.cs" />
     <Compile Include="Assets\Scripts\UpzoneScript.cs" />
-    <Compile Include="Assets\Scripts\ItemGiverScript.cs" />
-    <Compile Include="Assets\Scriptable Objects\ItemSO.cs" />
-    <Compile Include="Assets\ItemScript.cs" />
+    <Compile Include="Assets\Scripts\CinemachineShakeScript.cs" />
+    <Compile Include="Assets\Scripts\ItemS\SizeItemScript.cs" />
+    <Compile Include="Assets\RewardPartScript.cs" />
+    <Compile Include="Assets\RewardFrameScript.cs" />
+    <Compile Include="Assets\BackgroundColorScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

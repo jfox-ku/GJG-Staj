@@ -27,6 +27,9 @@ public class PlayerScript : MonoBehaviour
     private float WallHitCDKeeper;
 
 
+    public List<ItemScript> inventory;
+
+
     public ParticleSystem PartSys;
 
     //this is bad
@@ -37,6 +40,10 @@ public class PlayerScript : MonoBehaviour
    
     void Start()
     {
+        if (inventory == null) {
+            inventory = new List<ItemScript>();
+
+        }
         rb = this.GetComponent<Rigidbody2D>();
         changeType(Type.RECT);
 
@@ -153,6 +160,7 @@ public class PlayerScript : MonoBehaviour
 
             jump(obje);
             
+            
         }else if (obje.CompareTag("Wall")) {
 
             if(WallHitCDKeeper == 0) {
@@ -177,8 +185,8 @@ public class PlayerScript : MonoBehaviour
             rm.LoadZoneTrigger(obje);
         }
         if (obje.CompareTag("Item")) {
-            var giver = obje.GetComponent<ItemGiverScript>();
-
+            var giver = obje.GetComponent<RewardFrameScript>();
+            giver.giveItem();
 
         }
 
@@ -210,6 +218,7 @@ public class PlayerScript : MonoBehaviour
         }
         rb.drag = baseDrag;
         rb.AddForce(jumpable.getJumpForce() * jumpMultiplier);
+        CinemachineShakeScript.Instance.ShakeCamera(0.5f* jumpMultiplier, 0.2f);
         jumpable.Disable();
     }
 
@@ -240,5 +249,29 @@ public class PlayerScript : MonoBehaviour
         return dir;
     }
 
-    
+    #region Items
+    public void addToInventory(ItemScript item) {
+        
+        if(inventory== null) {
+            inventory = new List<ItemScript>();
+
+        }
+        foreach(ItemScript i in inventory) {
+            if(i.itemName == item.itemName) {
+                Debug.Log("Player has item "+item.itemName+". Adding to it, count total = " + item.count);
+                i.AddItem();
+                i.OnPickUp();
+                return;
+            }
+
+        }
+        Debug.Log("Adding " + item.itemName + " to inventory first time. Count total = " + item.count);
+        inventory.Add(item);
+        item.OnPickUp();
+
+    }
+
+
+    #endregion 
+
 }

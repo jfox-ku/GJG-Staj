@@ -16,6 +16,8 @@ MonoBehaviour:
   - {fileID: 9200856735048209627, guid: 5c52363ceb8f4a143b96e95a3ee3a8ee, type: 3}
   - {fileID: 3848350772925435689, guid: 7c722683ad0ec8a4198cdf6f98894cea, type: 3}
   - {fileID: 3966527959438499343, guid: 2edbe535af833eb449dcf0716a896aa9, type: 3}
-  BGstartColor: {r: 0.7169812, g: 0.503916, b: 0.503916, a: 1}
-  BGendColor: {r: 0.30277678, g: 0.35787082, b: 0.7924528, a: 1}
-  colorSwapDistanceMax: 50
+  ItemsList:
+  - {fileID: 926266060122578957, guid: 7383137fc8d73ab4c9c2c3bed22a19ec, type: 3}
+  BGstartColor: {r: 0.65999997, g: 0.98800004, b: 1, a: 1}
+  BGendColor: {r: 1, g: 0.7334118, b: 0.33999997, a: 1}
+  colorSwapDistanceMax: 350
