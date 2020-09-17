@@ -19,11 +19,13 @@ public class PlayerScript : MonoBehaviour
     public bool canDrag = true;
     public float throwMultiplier = 12f;
     public float dragSlowMultiplier = 19f / 20f;
+    private bool dragCancel = false;
 
 
     [Header("Collision stuff")]
     private float WallHitCD = 0.1f;
     private float WallHitCDKeeper;
+
 
     public ParticleSystem PartSys;
 
@@ -56,7 +58,7 @@ public class PlayerScript : MonoBehaviour
 
 
             if (touch.phase == TouchPhase.Began) {
-
+                dragCancel = false;
                 dragStartPos = touch.position;
                 rb.drag = 70f;
                 StartCoroutine(dragLerper(baseDrag));
@@ -64,8 +66,11 @@ public class PlayerScript : MonoBehaviour
                // Debug.Log("Touch began at " + dragStartPos);
             } else if (touch.phase == TouchPhase.Moved) {
 
-                var dir = (Vector3)clampDown(touch.position - (Vector2)dragStartPos);
-                dragDrawer.UpdateLine(transform.position,transform.position+dir / 200f);
+                if (!dragCancel) {
+                    var dir = (Vector3)clampDown(touch.position - (Vector2)dragStartPos);
+                    dragDrawer.UpdateLine(transform.position, transform.position + dir / 200f);
+                }
+                
 
             } else if (touch.phase == TouchPhase.Stationary) {
 
@@ -76,17 +81,21 @@ public class PlayerScript : MonoBehaviour
 
             } else if (touch.phase == TouchPhase.Ended) {
 
-                var dir = (Vector3)clampDown(touch.position - (Vector2)dragStartPos);
-                if (Mathf.Abs(dir.x) < 10f) {
-                    dir.x = 0;
-                    dir.y = -1f;
+                if (!dragCancel) {
+                    var dir = (Vector3)clampDown(touch.position - (Vector2)dragStartPos);
+                    if (Mathf.Abs(dir.x) < 20f) {
+                        dir.x = 0;
+                        dir.y = -1f;
+                    }
+
+                    StopCoroutine(dragLerper(baseDrag));
+                    rb.drag = baseDrag;
+                    rb.velocity = new Vector2(rb.velocity.x, 0);
+                    rb.AddForce((Vector2)dir.normalized * throwMultiplier, ForceMode2D.Impulse);
+                    canDrag = false;
                 }
 
-                StopCoroutine(dragLerper(baseDrag));
-                rb.drag = baseDrag;
-                rb.velocity = new Vector2(rb.velocity.x,0);
-                rb.AddForce((Vector2)dir.normalized*throwMultiplier,ForceMode2D.Impulse);
-                canDrag = false;
+                
                 dragDrawer.DestroyLine();
             }
 
@@ -141,20 +150,11 @@ public class PlayerScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision) {
         var obje = collision.gameObject;
         if (obje.CompareTag("Jumpable")) {
-            canDrag = true;
-            var jumpable = obje.GetComponent<JumpableScript>();
-            if (jumpable.allowJump == false) return;
-            //maybe null check
-            int jumpMultiplier = 1;
-            if (jumpable.tip == PlayerType) jumpMultiplier = 2;
-            changeType(jumpable.tip);
-            rb.velocity = new Vector2(rb.velocity.x*speedGainOnJump,0);
-            //rb.angularVelocity = 45f;
-            rb.drag = baseDrag;
-            rb.AddForce(jumpable.getJumpForce() * jumpMultiplier);
-            jumpable.Disable();
 
+            jump(obje);
+            
         }else if (obje.CompareTag("Wall")) {
+
             if(WallHitCDKeeper == 0) {
                 StartCoroutine(wallHitCooldown());
                 rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
@@ -163,6 +163,8 @@ public class PlayerScript : MonoBehaviour
 
         }
     }
+
+
 
     private void OnTriggerEnter2D(Collider2D collision) {
         var obje = collision.gameObject;
@@ -173,9 +175,13 @@ public class PlayerScript : MonoBehaviour
             //Debug.Log("Next Zone Triggered");
             var rm = FindObjectOfType<RunManagerScript>();
             rm.LoadZoneTrigger(obje);
-            
+        }
+        if (obje.CompareTag("Item")) {
+            var giver = obje.GetComponent<ItemGiverScript>();
+
 
         }
+
     }
 
     private void OnTriggerStay2D(Collider2D collision) {
@@ -185,6 +191,26 @@ public class PlayerScript : MonoBehaviour
             obje.GetComponent<UpzoneScript>().MoveUpConfiner();
         }
 
+    }
+
+    private void jump(GameObject obje) {
+        canDrag = true;
+        var jumpable = obje.GetComponent<JumpableScript>();
+        if (jumpable.allowJump == false) return;
+        //maybe null check
+        int jumpMultiplier = 1;
+        if (jumpable.tip == PlayerType) jumpMultiplier = 2;
+
+        changeType(jumpable.tip);
+        rb.velocity = new Vector2(rb.velocity.x * speedGainOnJump, 0);
+        //rb.angularVelocity = 45f;
+        if (Input.touchCount > 0) {
+            dragCancel = true;
+            dragDrawer.DestroyLine();
+        }
+        rb.drag = baseDrag;
+        rb.AddForce(jumpable.getJumpForce() * jumpMultiplier);
+        jumpable.Disable();
     }
 
 

@@ -62,20 +62,23 @@
     <Compile Include="Assets\Scripts\BackgroundParallax.cs" />
     <Compile Include="Assets\Scriptable Objects\PieceCreatorSO.cs" />
     <Compile Include="Assets\Scripts\PlayerScript.cs" />
-    <Compile Include="Assets\RunManagerScript.cs" />
+    <Compile Include="Assets\Scripts\RunManagerScript.cs" />
     <Compile Include="Assets\Scripts\DragLineDrawer.cs" />
     <Compile Include="Assets\Scriptable Objects\JumpableSO.cs" />
     <Compile Include="Assets\Scripts\CustomSceneManager.cs" />
     <Compile Include="Assets\Scripts\JumpableScript.cs" />
     <Compile Include="Assets\Scripts\PieceCreatorScript.cs" />
     <Compile Include="Assets\Scripts\InactiveCollector.cs" />
-    <Compile Include="Assets\RunPartScript.cs" />
+    <Compile Include="Assets\Scripts\MainMenuScript.cs" />
+    <Compile Include="Assets\Scripts\RunPartScript.cs" />
+    <Compile Include="Assets\Scripts\UIScoreScript.cs" />
     <Compile Include="Assets\Scriptable Objects\RunPartSO.cs" />
     <Compile Include="Assets\Scripts\ColliderType.cs" />
-    <Compile Include="Assets\UpzoneScript.cs" />
     <Compile Include="Assets\Scriptable Objects\SetSO.cs" />
-    <Compile Include="Assets\UIScoreScript.cs" />
-    <Compile Include="Assets\MainMenuScript.cs" />
+    <Compile Include="Assets\Scripts\UpzoneScript.cs" />
+    <Compile Include="Assets\Scripts\ItemGiverScript.cs" />
+    <Compile Include="Assets\Scriptable Objects\ItemSO.cs" />
+    <Compile Include="Assets\ItemScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

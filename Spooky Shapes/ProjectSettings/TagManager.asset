@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - Upzone
   - LoadNextZone
+  - Item
   layers:
   - Default
   - TransparentFX

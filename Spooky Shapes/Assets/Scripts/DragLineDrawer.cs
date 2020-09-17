@@ -41,7 +41,7 @@ public class DragLineDrawer : MonoBehaviour
             end = start + (end - start).normalized * maxLineLength;
         }
         if (this.lineRenderer == null) {
-            Debug.Log("Update line called no line renderer.");
+            //Debug.Log("Update line called no line renderer.");
             return;
         }
         Vector3[] arr = { start, end };
