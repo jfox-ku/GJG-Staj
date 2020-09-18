@@ -15,8 +15,10 @@ public class SizeItemScript : ItemScript
 
 
     public override void effector() {
-        var player = GameObject.FindGameObjectWithTag("Player");
         if (count > 14) return;
+
+        var player = GameObject.FindGameObjectWithTag("Player");
+
         Debug.Log("Setting player size to "+ new Vector3(1 + (count+1) / 10f, 1 + (count + 1) / 10f, 1));
         player.transform.localScale = new Vector3(1f + (count + 1) / 10f,1f+ (count + 1) / 10f,1);
 

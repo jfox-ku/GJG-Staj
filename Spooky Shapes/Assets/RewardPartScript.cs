@@ -17,7 +17,8 @@ public class RewardPartScript : MonoBehaviour
     public void SetUpItems() {
         foreach (RewardFrameScript frame in frames) {
             var item = runPart.set.getRandomItem();
-           // Debug.Log("Setting item "+item.name+" at frame "+frame.name);
+            // Debug.Log("Setting item "+item.name+" at frame "+frame.name);
+            item.SetUpItem();
             frame.SetItem(item);
 
         }

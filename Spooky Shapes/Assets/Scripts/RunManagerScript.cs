@@ -74,25 +74,38 @@ public class RunManagerScript : MonoBehaviour
             if(player.transform.position.y > loadedRunParts.Peek().GetComponent<RunPartScript>().GetTopPos().y)
             Destroy(loadedRunParts.Dequeue());
         }
+
         if(toLoadIndex >= RunParts.Count) toLoadIndex = Random.Range(0, RunParts.Count);
-        RunPartSO sp = RunParts[toLoadIndex];
-        
-        
-        var part = Instantiate(sp.runPartPrefab, spawnPos, Quaternion.identity);
-        var partScript = part.GetComponent<RunPartScript>();
-        part.transform.position += new Vector3(0, partScript.GetSpawnHeight(),0) ;
-        loadedRunParts.Enqueue(part);
-        partScript.SetUpCreators();
 
-        var reward = part.GetComponent<RewardPartScript>();
-        if (reward != null) {
-            reward.SetUpItems();
+        RunPartSO sp;
+        if(totalLoaded > 4 && totalLoaded % 5 == 0) {
+            sp = set.RewardPart;
+        } else {
+            sp = RunParts[toLoadIndex];
         }
+        
+        
+        if(loadedRunParts.Count < 6) {
+
+            var part = Instantiate(sp.runPartPrefab, spawnPos, Quaternion.identity);
+            var partScript = part.GetComponent<RunPartScript>();
+            part.transform.position += new Vector3(0, partScript.GetSpawnHeight(), 0);
+            loadedRunParts.Enqueue(part);
+            partScript.SetUpCreators();
+
+            var reward = part.GetComponent<RewardPartScript>();
+            if (reward != null) {
+                reward.SetUpItems();
+            }
+            spawnPos.y = partScript.GetTopPos().y;
+            toLoadIndex++;
+            totalLoaded++;
+
+        }
+        
 
 
-        spawnPos.y = partScript.GetTopPos().y;
-        toLoadIndex++;
-        totalLoaded++;
+        
     }
 
 

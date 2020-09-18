@@ -5540,7 +5540,7 @@ Transform:
   m_GameObject: {fileID: 8637645950300003843}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.3, y: 3.94, z: -3.12105}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8637645949928386302}
   - {fileID: 8637645950987360959}
@@ -5626,10 +5626,17 @@ MonoBehaviour:
   canDrag: 1
   throwMultiplier: 16
   dragSlowMultiplier: 0.95
+  inventory: []
   PartSys: {fileID: 0}
-  tri: {fileID: -1237169056675520465, guid: bb64310a09e62bb4f9bc193063e60afc, type: 3}
-  rect: {fileID: 6086321791314890075, guid: bb64310a09e62bb4f9bc193063e60afc, type: 3}
-  circ: {fileID: -1217992157231990780, guid: bb64310a09e62bb4f9bc193063e60afc, type: 3}
+  Sprites:
+  - {fileID: -1237169056675520465, guid: bb64310a09e62bb4f9bc193063e60afc, type: 3}
+  - {fileID: 6086321791314890075, guid: bb64310a09e62bb4f9bc193063e60afc, type: 3}
+  - {fileID: -1217992157231990780, guid: bb64310a09e62bb4f9bc193063e60afc, type: 3}
+  jumpMult: 1
+  itemMultipliers:
+  - 0
+  - 0
+  - 0
   speedGainOnJump: 1.2
 --- !u!50 &8637645950300003842
 Rigidbody2D:

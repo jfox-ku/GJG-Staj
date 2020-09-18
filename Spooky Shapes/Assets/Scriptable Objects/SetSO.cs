@@ -8,6 +8,7 @@ public class SetSO : ScriptableObject
     //public List<GameObject> CreatorsLst;
     public List<GameObject> JumpablesLst;
     public List<ItemScript> ItemsList;
+    public RunPartSO RewardPart;
 
     public Color BGstartColor;
     public Color BGendColor;
@@ -26,7 +27,7 @@ public class SetSO : ScriptableObject
 
     public void ResetItemCount() {
         foreach(ItemScript item in ItemsList) {
-            item.count = 0;
+            item.reset();
         }
     }
 }

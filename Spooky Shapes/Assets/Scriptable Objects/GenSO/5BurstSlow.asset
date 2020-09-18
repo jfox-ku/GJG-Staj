@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 9200856735048209627, guid: 5c52363ceb8f4a143b96e95a3ee3a8ee, type: 3}
   numToGen: 5
-  genCooldown: 0.5
+  genCooldown: 0.3
   travelTime: 2.5
   nextGenCooldown: 4

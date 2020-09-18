@@ -21,6 +21,16 @@ public abstract class ItemScript : MonoBehaviour
         
     }
 
+    public virtual void SetUpItem() {
+
+    }
+
+    public virtual void reset() {
+        count = 0;
+    }
+
+
+
     public virtual void effector() {
         Debug.Log("Item has no effect.");
     }

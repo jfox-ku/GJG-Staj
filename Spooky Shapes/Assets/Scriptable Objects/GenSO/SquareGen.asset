@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SquareGen
   m_EditorClassIdentifier: 
   prefab: {fileID: 3848350772925435689, guid: 7c722683ad0ec8a4198cdf6f98894cea, type: 3}
-  numToGen: 2
-  genCooldown: 1
+  numToGen: 4
+  genCooldown: 0.2
   travelTime: 0.4
-  nextGenCooldown: 3
+  nextGenCooldown: 2

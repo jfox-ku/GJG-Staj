@@ -43,6 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 680c0cb6b12144a4a9a801180fc3a946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: -1868801678021415692, guid: e3700cf96600b224784619bb73c3e422, type: 3}
+  itemSprite: {fileID: 7088195717133943867, guid: e3700cf96600b224784619bb73c3e422, type: 3}
   count: 0
   itemName: sizeItem

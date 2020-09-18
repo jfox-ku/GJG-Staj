@@ -32,14 +32,18 @@ public class PlayerScript : MonoBehaviour
 
     public ParticleSystem PartSys;
 
-    //this is bad
-    public Sprite tri;
-    public Sprite rect;
-    public Sprite circ;
 
-   
+    public Sprite[] Sprites;
+
+    [Header("Jump stuff")]
+    public float jumpMult = 1;
+    public float[] itemMultipliers;
+
+
     void Start()
     {
+       
+
         if (inventory == null) {
             inventory = new List<ItemScript>();
 
@@ -125,18 +129,7 @@ public class PlayerScript : MonoBehaviour
 
     public void changeSprite() {
         Sprite sprite = this.GetComponent<SpriteRenderer>().sprite;
-        switch (PlayerType) {
-            case Type.TRI:
-                sprite = tri;
-                break;
-            case Type.RECT:
-                sprite = rect;
-                break;
-            case Type.CIRC:
-                sprite = circ;
-                break;
-
-        }
+        sprite = Sprites[(int)PlayerType];
 
         if(sprite!=null)
         this.GetComponent<SpriteRenderer>().sprite = sprite;  
@@ -201,6 +194,8 @@ public class PlayerScript : MonoBehaviour
 
     }
 
+    
+
     private void jump(GameObject obje) {
         canDrag = true;
         var jumpable = obje.GetComponent<JumpableScript>();
@@ -217,7 +212,7 @@ public class PlayerScript : MonoBehaviour
             dragDrawer.DestroyLine();
         }
         rb.drag = baseDrag;
-        rb.AddForce(jumpable.getJumpForce() * jumpMultiplier);
+        rb.AddForce(jumpable.getJumpForce() * (jumpMultiplier+itemMultipliers[(int)PlayerType]));
         CinemachineShakeScript.Instance.ShakeCamera(0.5f* jumpMultiplier, 0.2f);
         jumpable.Disable();
     }
@@ -230,11 +225,13 @@ public class PlayerScript : MonoBehaviour
         }
         WallHitCDKeeper = WallHitCD;
     }
-    
 
+
+    public float itemDragWait = 0f;
     //Slow down player at the start of dragging. Increase rigidbody linear drag.
     private IEnumerator dragLerper(float target) {
         rb.drag = 100f;
+        yield return new WaitForSeconds(itemDragWait);
         while(rb.drag > target) {
             rb.drag = rb.drag * dragSlowMultiplier;
             yield return new WaitForEndOfFrame();
@@ -258,14 +255,15 @@ public class PlayerScript : MonoBehaviour
         }
         foreach(ItemScript i in inventory) {
             if(i.itemName == item.itemName) {
-                Debug.Log("Player has item "+item.itemName+". Adding to it, count total = " + item.count);
+                
                 i.AddItem();
                 i.OnPickUp();
+                Debug.Log("Player has item " + item.itemName);
                 return;
             }
 
         }
-        Debug.Log("Adding " + item.itemName + " to inventory first time. Count total = " + item.count);
+        Debug.Log("Adding " + item.itemName + " to inventory first time.");
         inventory.Add(item);
         item.OnPickUp();
 
