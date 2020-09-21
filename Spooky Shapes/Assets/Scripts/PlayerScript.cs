@@ -17,6 +17,7 @@ public class PlayerScript : MonoBehaviour
     [Header("Drag Controls")]
     public Vector3 dragStartPos;
     public bool canDrag = true;
+    public bool isDragging = false;
     public float throwMultiplier = 12f;
     public float dragSlowMultiplier = 19f / 20f;
     private bool dragCancel = false;
@@ -28,7 +29,7 @@ public class PlayerScript : MonoBehaviour
 
 
     public List<ItemScript> inventory;
-
+    DefaultInputManager ImInstance;
 
     public ParticleSystem PartSys;
 
@@ -42,7 +43,10 @@ public class PlayerScript : MonoBehaviour
 
     void Start()
     {
-       
+
+        DefaultInputManager.instance.InputUpEvent += InputUp;
+        DefaultInputManager.instance.InputDownEvent += InputDown;
+        DefaultInputManager.instance.InputEvent += InputDrag;
 
         if (inventory == null) {
             inventory = new List<ItemScript>();
@@ -53,66 +57,63 @@ public class PlayerScript : MonoBehaviour
 
     }
 
+    private void OnDestroy() {
+        DefaultInputManager.instance.InputUpEvent -= InputUp;
+        DefaultInputManager.instance.InputDownEvent -= InputDown;
+        DefaultInputManager.instance.InputEvent -= InputDrag;
+    }
+
+    private void InputDown(Vector2 inp) {
+        //Debug.Log("Input down event!");
+        if (canDrag) {
+            dragCancel = false;
+            isDragging = true;
+            dragStartPos = inp;
+            rb.drag = 70f;
+            StartCoroutine(dragLerper(baseDrag));
+            dragDrawer.DrawLine(dragStartPos, dragStartPos);
+        }
+        
+    }
+
+    private void InputUp(Vector2 inp) {
+        //Debug.Log("Input up event!");
+        if (!dragCancel && canDrag) {
+            var dir = (Vector3)clampDown(inp - (Vector2)dragStartPos);
+
+            //This is for just tapping the screen.
+            if (Mathf.Abs(dir.x) < 20f) {
+                dir.x = 0;
+                dir.y = -1f;
+            }
+
+            StopCoroutine(dragLerper(baseDrag));
+            rb.drag = baseDrag;
+            rb.velocity = new Vector2(rb.velocity.x, 0);
+            rb.AddForce((Vector2)dir.normalized * throwMultiplier, ForceMode2D.Impulse);
+            canDrag = false;
+            isDragging = false;
+        }
+
+
+        dragDrawer.DestroyLine();
+    }
+
+    
+
+    private void InputDrag(Vector2 inp) {
+        //Debug.Log("Input drag event!");
+        if (!dragCancel && canDrag) {
+            var dir = (Vector3)clampDown(inp - (Vector2)dragStartPos);
+            dragDrawer.UpdateLine(transform.position, transform.position + dir / 250f);
+        }
+    }
 
     void Update()
     {
-        if(canDrag)
-        touchInput();
-        
 
     }
 
-
-    public void touchInput() {
-        if (Input.touchCount > 0) {
-            Touch touch = Input.GetTouch(0);
-
-
-            if (touch.phase == TouchPhase.Began) {
-                dragCancel = false;
-                dragStartPos = touch.position;
-                rb.drag = 70f;
-                StartCoroutine(dragLerper(baseDrag));
-                dragDrawer.DrawLine(dragStartPos,dragStartPos);
-               // Debug.Log("Touch began at " + dragStartPos);
-            } else if (touch.phase == TouchPhase.Moved) {
-
-                if (!dragCancel) {
-                    var dir = (Vector3)clampDown(touch.position - (Vector2)dragStartPos);
-                    dragDrawer.UpdateLine(transform.position, transform.position + dir / 200f);
-                }
-                
-
-            } else if (touch.phase == TouchPhase.Stationary) {
-
-                var dir = (Vector3)clampDown(touch.position - (Vector2)dragStartPos);
-                dragDrawer.UpdateLine(transform.position, transform.position + dir / 200f);
-                
-
-
-            } else if (touch.phase == TouchPhase.Ended) {
-
-                if (!dragCancel) {
-                    var dir = (Vector3)clampDown(touch.position - (Vector2)dragStartPos);
-                    if (Mathf.Abs(dir.x) < 20f) {
-                        dir.x = 0;
-                        dir.y = -1f;
-                    }
-
-                    StopCoroutine(dragLerper(baseDrag));
-                    rb.drag = baseDrag;
-                    rb.velocity = new Vector2(rb.velocity.x, 0);
-                    rb.AddForce((Vector2)dir.normalized * throwMultiplier, ForceMode2D.Impulse);
-                    canDrag = false;
-                }
-
-                
-                dragDrawer.DestroyLine();
-            }
-
-
-        }
-    }
 
     #region changestuff
     public void changeType(Type tip) {
@@ -207,13 +208,16 @@ public class PlayerScript : MonoBehaviour
         changeType(jumpable.tip);
         rb.velocity = new Vector2(rb.velocity.x * speedGainOnJump, 0);
         //rb.angularVelocity = 45f;
-        if (Input.touchCount > 0) {
+        if (isDragging) {
             dragCancel = true;
             dragDrawer.DestroyLine();
         }
         rb.drag = baseDrag;
         rb.AddForce(jumpable.getJumpForce() * (jumpMultiplier+itemMultipliers[(int)PlayerType]));
-        CinemachineShakeScript.Instance.ShakeCamera(0.5f* jumpMultiplier, 0.2f);
+
+        //Shake is weird right now. Need better numbers? (seems to overshoot and bug out)
+        //CinemachineShakeScript.Instance.ShakeCamera(0.5f* jumpMultiplier, 0.2f);
+
         jumpable.Disable();
     }
 
@@ -258,12 +262,12 @@ public class PlayerScript : MonoBehaviour
                 
                 i.AddItem();
                 i.OnPickUp();
-                Debug.Log("Player has item " + item.itemName);
+                //Debug.Log("Player has item " + item.itemName);
                 return;
             }
 
         }
-        Debug.Log("Adding " + item.itemName + " to inventory first time.");
+        //Debug.Log("Adding " + item.itemName + " to inventory first time.");
         inventory.Add(item);
         item.OnPickUp();
 

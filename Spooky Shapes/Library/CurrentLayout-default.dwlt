@@ -122,7 +122,7 @@ MonoBehaviour:
   m_MinSize: {x: 881, y: 492}
   m_MaxSize: {x: 18004, y: 14042}
   vertical: 0
-  controlID: 138
+  controlID: 202
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_MinSize: {x: 605, y: 492}
   m_MaxSize: {x: 14003, y: 14042}
   vertical: 1
-  controlID: 93
+  controlID: 45
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_MinSize: {x: 605, y: 221}
   m_MaxSize: {x: 12005, y: 4021}
   vertical: 0
-  controlID: 94
+  controlID: 46
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -276,7 +276,7 @@ MonoBehaviour:
   m_MinSize: {x: 333, y: 271}
   m_MaxSize: {x: 14003, y: 10021}
   vertical: 0
-  controlID: 169
+  controlID: 166
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -484,9 +484,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -3.0478039, y: 56.529495, z: -3.3219576}
+    m_Target: {x: -4.04222, y: 25.686216, z: -18.933764}
     speed: 2
-    m_Value: {x: -3.0478039, y: 56.529495, z: -3.3219576}
+    m_Value: {x: -4.04222, y: 25.686216, z: -18.933764}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -537,9 +537,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 9.660803
+    m_Target: 56.238037
     speed: 2
-    m_Value: 9.660803
+    m_Value: 56.238037
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -594,7 +594,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 3c6af0ff546af0ff726bf0ff866bf0ff16e3f0ffbceff0ffde16f1fff816f1ff6c29f1ff7a42f1ffb842f1ff60f8f4ff56fcf4ffe023f5fff823f5ff0e25f5ff1a25f5ff96b9f9ff94edfbff3071fcffdab7fcffc854fdff82b5ffff5afbffffb83d0000be3d0000ee520000245e0000d66300001667000084840000e68400001c85000040870000a2880000
+      m_ExpandedIDs: 7496fcffc821fdffa2d3feffbc79ffffe0faffffecfaffff5afbfffff4ffffffc03d000070680000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -733,7 +733,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 46410000
     m_LastClickedID: 16710
-    m_ExpandedIDs: 00000000184100001e410000
+    m_ExpandedIDs: 00000000ec400000ee400000f0400000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -761,7 +761,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000018410000
+    m_ExpandedIDs: 00000000ec400000ee400000f0400000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -844,7 +844,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 33942
+  m_LastSelectedObjectID: 26654
 --- !u!114 &22
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -944,21 +944,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scriptable Objects/GenSO
+    - Assets/Scripts/ItemS
     m_Globs: []
   m_ViewMode: 1
   m_StartGridSize: 53
   m_LastFolders:
-  - Assets/Scriptable Objects/GenSO
+  - Assets/Scripts/ItemS
   m_LastFoldersGridSize: 53
   m_LastProjectPath: C:\Users\atahanylmz\Documents\GitHub\GJG-Staj\Spooky Shapes
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 8}
-    m_SelectedIDs: 2a410000
-    m_LastClickedID: 16682
-    m_ExpandedIDs: 00000000184100001e410000244100002641000028410000
+    m_SelectedIDs: 1c410000
+    m_LastClickedID: 16668
+    m_ExpandedIDs: 00000000ec400000ee400000f040000010410000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -986,7 +986,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000018410000
+    m_ExpandedIDs: 00000000ec400000ee400000f0400000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1073,7 +1073,7 @@ MonoBehaviour:
     m_CachedPref: 333
     m_ControlHash: 1412526313
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: 16206
+  m_LastInspectedObjectInstanceID: -1312
   m_LastVerticalScrollValue: 0
   m_AssetGUID: 
   m_InstanceID: 0

@@ -12,7 +12,7 @@ public abstract class ItemScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        count = 1;
+        count = 0;
     }
 
     // Update is called once per frame

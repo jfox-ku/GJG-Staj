@@ -19,8 +19,10 @@ public class SizeItemScript : ItemScript
 
         var player = GameObject.FindGameObjectWithTag("Player");
 
-        Debug.Log("Setting player size to "+ new Vector3(1 + (count+1) / 10f, 1 + (count + 1) / 10f, 1));
-        player.transform.localScale = new Vector3(1f + (count + 1) / 10f,1f+ (count + 1) / 10f,1);
+        
+        var newScale = new Vector3(1f + (count + 1) / 10f, 1f + (count + 1) / 10f, 1);
+        Debug.Log("Setting player size to " + newScale);
+        player.transform.localScale = newScale;
 
     }
 }
