@@ -122,6 +122,7 @@ public class RunManagerScript : MonoBehaviour
     }
 
     public void LoadZoneTrigger(GameObject obje) {
+        //Instantiate(testingPiece, new Vector2(player.transform.position.x, player.transform.position.y - 2f), Quaternion.identity);
         var parentRunPart = obje.transform.parent.GetComponent<RunPartScript>();
         //Debug.Log("Load Trigger ID: " + parentRunPart.id);
         //If different Part ID, load new part

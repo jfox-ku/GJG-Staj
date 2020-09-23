@@ -7,6 +7,7 @@ public class DragLineDrawer : MonoBehaviour
     private LineRenderer lineRenderer;
     public Material lineMat;
     public float maxLineLength;
+    public Gradient clr;
 
     #region linestuff
     public void DrawLine(Vector2 start, Vector2 end) {
@@ -28,7 +29,7 @@ public class DragLineDrawer : MonoBehaviour
         this.lineRenderer.endWidth = 0.05f;
         this.lineRenderer.positionCount = 2;
         lineRenderer.material = lineMat;
-        lineRenderer.endColor = Color.red;
+        lineRenderer.colorGradient = clr;
         this.lineRenderer.SetPositions(arr);
 
 

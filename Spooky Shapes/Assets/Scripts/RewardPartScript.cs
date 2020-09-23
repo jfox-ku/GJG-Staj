@@ -6,6 +6,7 @@ public class RewardPartScript : MonoBehaviour
 {
     private RunPartScript runPart;
     public List<RewardFrameScript> frames;
+    public PlayerScript player;
 
     // Start is called before the first frame update
     void Awake()
@@ -25,10 +26,13 @@ public class RewardPartScript : MonoBehaviour
     }
 
     public void GiveItemPlayer(ItemScript it) {
-        var Player = GameObject.FindGameObjectWithTag("Player");
-        var PScript = Player.GetComponent<PlayerScript>();
+        if (player == null) {
+            var Player = GameObject.FindGameObjectWithTag("Player");
+            player = Player.GetComponent<PlayerScript>();
+        }
+        
 
-        PScript.addToInventory(it);
+        player.addToInventory(it);
         foreach(RewardFrameScript frame in frames) {
             frame.gameObject.SetActive(false);
         }

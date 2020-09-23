@@ -8,8 +8,8 @@ public class RunPartSO : ScriptableObject
 {
 
     public GameObject runPartPrefab;
-    public float width = 10;
-    public float height = 22;
+    //public float width = 10;
+    //public float height = 22;
     [Range(0, 10)]
     public float difficulty;
 

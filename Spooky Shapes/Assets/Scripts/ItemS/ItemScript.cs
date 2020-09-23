@@ -1,18 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 
 public abstract class ItemScript : MonoBehaviour
 {
     public Sprite itemSprite;
-
+    public Image itemImage;
     public float count;
     public string itemName;
+
+    public event Action CountEvent;
     
     // Start is called before the first frame update
     void Start()
     {
-        count = 0;
+        
     }
 
     // Update is called once per frame
@@ -44,5 +48,9 @@ public abstract class ItemScript : MonoBehaviour
 
     }
 
+    public void SetSprites() {
+        itemSprite = itemImage.sprite;
+
+    }
 
 }

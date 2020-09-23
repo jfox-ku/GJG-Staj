@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class PlayerScript : MonoBehaviour
 
     [Header("Line Stuff")]
     public DragLineDrawer dragDrawer;
+    public event Action<List<ItemScript>> InventoryEvent;
 
 
     [Header("Drag Controls")]
@@ -63,9 +66,11 @@ public class PlayerScript : MonoBehaviour
         DefaultInputManager.instance.InputEvent -= InputDrag;
     }
 
+    #region Input
     private void InputDown(Vector2 inp) {
         //Debug.Log("Input down event!");
         if (canDrag) {
+
             dragCancel = false;
             isDragging = true;
             dragStartPos = inp;
@@ -108,9 +113,21 @@ public class PlayerScript : MonoBehaviour
             dragDrawer.UpdateLine(transform.position, transform.position + dir / 250f);
         }
     }
+    #endregion
 
-    void Update()
+
+
+    void FixedUpdate()
     {
+        if(rb.angularVelocity > 60f) {
+            //Debug.LogWarning("Angular Velocity Over 60 Deg");
+            rb.angularVelocity = 60f;
+        }
+
+        if(rb.velocity.magnitude > 30f) {
+            //Debug.LogWarning("Max velocity reached");
+            rb.velocity = rb.velocity.normalized * 30f;
+        }
 
     }
 
@@ -147,6 +164,7 @@ public class PlayerScript : MonoBehaviour
     }
     #endregion changestuff
 
+    #region CollisionStuff
     public float speedGainOnJump = 1.2f;
     private void OnCollisionEnter2D(Collision2D collision) {
         var obje = collision.gameObject;
@@ -194,8 +212,8 @@ public class PlayerScript : MonoBehaviour
         }
 
     }
+    #endregion
 
-    
 
     private void jump(GameObject obje) {
         canDrag = true;
@@ -203,7 +221,11 @@ public class PlayerScript : MonoBehaviour
         if (jumpable.allowJump == false) return;
         //maybe null check
         int jumpMultiplier = 1;
-        if (jumpable.tip == PlayerType) jumpMultiplier = 2;
+        if (jumpable.tip == PlayerType) {
+            jumpMultiplier = 2;
+            jumpable.Explode();
+        }
+
 
         changeType(jumpable.tip);
         rb.velocity = new Vector2(rb.velocity.x * speedGainOnJump, 0);
@@ -217,7 +239,7 @@ public class PlayerScript : MonoBehaviour
 
         //Shake is weird right now. Need better numbers? (seems to overshoot and bug out)
         //CinemachineShakeScript.Instance.ShakeCamera(0.5f* jumpMultiplier, 0.2f);
-
+        
         jumpable.Disable();
     }
 
@@ -253,23 +275,31 @@ public class PlayerScript : MonoBehaviour
     #region Items
     public void addToInventory(ItemScript item) {
         
-        if(inventory== null) {
+        if(inventory == null) {
             inventory = new List<ItemScript>();
 
         }
-        foreach(ItemScript i in inventory) {
+
+        bool found = false;
+        foreach (ItemScript i in inventory) {
             if(i.itemName == item.itemName) {
                 
                 i.AddItem();
                 i.OnPickUp();
-                //Debug.Log("Player has item " + item.itemName);
-                return;
+                Debug.Log("Player has item " + item.itemName +" Count: "+i.count);
+                InventoryEvent?.Invoke(inventory);
+                found = true;
             }
 
         }
         //Debug.Log("Adding " + item.itemName + " to inventory first time.");
-        inventory.Add(item);
-        item.OnPickUp();
+        if (!found) {
+            inventory.Add(item);
+            item.AddItem();
+            item.OnPickUp();
+            InventoryEvent?.Invoke(inventory);
+        }
+        
 
     }
 

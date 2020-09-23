@@ -21,6 +21,6 @@ MonoBehaviour:
   - {fileID: 926266060122578957, guid: 7383137fc8d73ab4c9c2c3bed22a19ec, type: 3}
   - {fileID: 1869791613789173177, guid: d64a6637ca95d1a4ca2b17bf27ccd1ee, type: 3}
   RewardPart: {fileID: 11400000, guid: 88143c49034d321418f91c14e2f222ef, type: 2}
-  BGstartColor: {r: 0.65999997, g: 0.98800004, b: 1, a: 1}
-  BGendColor: {r: 1, g: 0.7334118, b: 0.33999997, a: 1}
+  BGstartColor: {r: 1, g: 1, b: 1, a: 1}
+  BGendColor: {r: 1, g: 1, b: 1, a: 1}
   colorSwapDistanceMax: 350

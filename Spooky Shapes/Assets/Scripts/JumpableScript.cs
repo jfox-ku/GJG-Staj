@@ -40,8 +40,10 @@ public class JumpableScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Player")) {
-            var partSys = Instantiate(PartSys, this.transform.position ,Quaternion.identity,this.transform.parent);
-            partSys.Play();
+            var player = collision.gameObject.GetComponent<PlayerScript>();
+            
+                
+            
 
             //gameObject.SetActive(false);
             //Will use this when pooling
@@ -53,6 +55,12 @@ public class JumpableScript : MonoBehaviour
 
     public void Disable() {
         gameObject.SetActive(false);
+    }
+
+    public void Explode() {
+        var partSys = Instantiate(PartSys, this.transform.position, Quaternion.identity, this.transform.parent);
+        partSys.Play();
+
     }
 
 
