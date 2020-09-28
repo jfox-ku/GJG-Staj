@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1141411982335045379}
   m_Layer: 0
   m_Name: MatchboostItem
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,16 +50,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2302d69dd513a8949af0e02a6aaff1af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: -5393329867537251099, guid: e3700cf96600b224784619bb73c3e422, type: 3}
+  itemSprite: {fileID: -7435757872754417112, guid: b8e6f67fb87f11f49963949fefba69af, type: 3}
   itemImage: {fileID: 1141411982335045379}
   count: 0
   itemName: 
   pieceType: 0
   pieceCounts: 
   sprites:
-  - {fileID: -6748361781355976898, guid: e3700cf96600b224784619bb73c3e422, type: 3}
-  - {fileID: -3228450315948415159, guid: e3700cf96600b224784619bb73c3e422, type: 3}
-  - {fileID: -5393329867537251099, guid: e3700cf96600b224784619bb73c3e422, type: 3}
+  - {fileID: -6836112080845144235, guid: b8e6f67fb87f11f49963949fefba69af, type: 3}
+  - {fileID: 2662629585600383434, guid: b8e6f67fb87f11f49963949fefba69af, type: 3}
+  - {fileID: 5393626279213196930, guid: b8e6f67fb87f11f49963949fefba69af, type: 3}
 --- !u!222 &9102281779532082900
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -88,7 +88,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -6748361781355976898, guid: e3700cf96600b224784619bb73c3e422, type: 3}
+  m_Sprite: {fileID: -7435757872754417112, guid: b8e6f67fb87f11f49963949fefba69af, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

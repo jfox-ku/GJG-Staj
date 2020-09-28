@@ -1,0 +1,664 @@
+fileFormatVersion: 2
+guid: b8e6f67fb87f11f49963949fefba69af
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1718852975954359371
+    second: MatchJump watercolor transp_0
+  - first:
+      213: -8743561834263111782
+    second: MatchJump watercolor transp_1
+  - first:
+      213: -1484792245987466414
+    second: MatchJump watercolor transp_2
+  - first:
+      213: 3960958834049791595
+    second: MatchJump watercolor transp_3
+  - first:
+      213: 2662629585600383434
+    second: MatchJump watercolor transp_4
+  - first:
+      213: 5393626279213196930
+    second: MatchJump watercolor transp_5
+  - first:
+      213: -6836112080845144235
+    second: MatchJump watercolor transp_6
+  - first:
+      213: 2053940167764477421
+    second: MatchJump watercolor transp_7
+  - first:
+      213: -2896871695489777844
+    second: MatchJump watercolor transp_8
+  - first:
+      213: 3545761990102831905
+    second: MatchJump watercolor transp_9
+  - first:
+      213: -5271999325417989934
+    second: MatchJump watercolor transp_10
+  - first:
+      213: -4821712875577520519
+    second: MatchJump watercolor transp_11
+  - first:
+      213: -6674708593522719104
+    second: MatchJump watercolor transp_12
+  - first:
+      213: -4179884298422549716
+    second: MatchJump watercolor transp_13
+  - first:
+      213: -7435757872754417112
+    second: MatchJump watercolor transp_14
+  - first:
+      213: 3386093857890265411
+    second: MatchJump watercolor transp_15
+  - first:
+      213: 3738627558700356300
+    second: MatchJump watercolor transp_16
+  - first:
+      213: -4138227229761573193
+    second: MatchJump watercolor transp_17
+  - first:
+      213: 1341926387425234614
+    second: MatchJump watercolor transp_18
+  - first:
+      213: -5297016914388810663
+    second: MatchJump watercolor transp_19
+  - first:
+      213: -4113207031232028510
+    second: MatchJump watercolor transp_20
+  - first:
+      213: 1934161095337917574
+    second: MatchJump watercolor transp_21
+  - first:
+      213: 475136233463437175
+    second: MatchJump watercolor transp_22
+  - first:
+      213: -3478182940268763331
+    second: MatchJump watercolor transp_23
+  - first:
+      213: -8607812075221223494
+    second: MatchJump watercolor transp_24
+  - first:
+      213: 8891386608796226104
+    second: MatchJump watercolor transp_25
+  - first:
+      213: -1931170462104297679
+    second: MatchJump watercolor transp_26
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 164
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MatchJump watercolor transp_0
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 2397
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b44f1ecbca79ad710800000000000000
+      internalID: 1718852975954359371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MatchJump watercolor transp_1
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 2398
+        width: 120
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a97951d46d0a8a680800000000000000
+      internalID: -8743561834263111782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MatchJump watercolor transp_2
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 2403
+        width: 132
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 253a9aca155f46be0800000000000000
+      internalID: -1484792245987466414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MatchJump watercolor transp_3
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 2402
+        width: 143
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b66bb71d21728f630800000000000000
+      internalID: 3960958834049791595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MatchJump watercolor transp_4
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 2248
+        width: 122
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac9082a308f83f420800000000000000
+      internalID: 2662629585600383434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MatchJump watercolor transp_5
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 2252
+        width: 120
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 286e6b736820ada40800000000000000
+      internalID: 5393626279213196930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MatchJump watercolor transp_6
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 2253
+        width: 131
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55ff77028404121a0800000000000000
+      internalID: -6836112080845144235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MatchJump watercolor transp_7
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 2244
+        width: 144
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de5028943bf018c10800000000000000
+      internalID: 2053940167764477421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MatchJump watercolor transp_8
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 2189
+        width: 25
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4fb27e8a8e3cc7d0800000000000000
+      internalID: -2896871695489777844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MatchJump watercolor transp_9
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 2187
+        width: 33
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12359266eb3153130800000000000000
+      internalID: 3545761990102831905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MatchJump watercolor transp_10
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 2184
+        width: 33
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d89c58bb8816d6b0800000000000000
+      internalID: -5271999325417989934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MatchJump watercolor transp_11
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1872
+        width: 166
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97e464aafa5d51db0800000000000000
+      internalID: -4821712875577520519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MatchJump watercolor transp_12
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 1863
+        width: 175
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 086c4d7f5ebae53a0800000000000000
+      internalID: -6674708593522719104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MatchJump watercolor transp_13
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 1849
+        width: 189
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c238a4660611ef5c0800000000000000
+      internalID: -4179884298422549716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MatchJump watercolor transp_14
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 1851
+        width: 191
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 822a8ae6c91eec890800000000000000
+      internalID: -7435757872754417112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MatchJump watercolor transp_15
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 758
+        width: 234
+        height: 1336
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3496ea76c62ddfe20800000000000000
+      internalID: 3386093857890265411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MatchJump watercolor transp_16
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 1642
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc212dfd4f542e330800000000000000
+      internalID: 3738627558700356300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MatchJump watercolor transp_17
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 1266
+        width: 91
+        height: 396
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7be663282401296c0800000000000000
+      internalID: -4138227229761573193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MatchJump watercolor transp_18
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 1617
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6be443580fa7f9210800000000000000
+      internalID: 1341926387425234614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MatchJump watercolor transp_26
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 404
+        width: 1408
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13fdb8d42ba1335e0800000000000000
+      internalID: -1931170462104297679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MatchJump watercolor transp_19
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1084
+        width: 537
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9548e906e273d76b0800000000000000
+      internalID: -5297016914388810663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

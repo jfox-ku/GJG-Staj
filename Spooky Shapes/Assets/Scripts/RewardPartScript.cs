@@ -34,6 +34,7 @@ public class RewardPartScript : MonoBehaviour
 
         player.addToInventory(it);
         foreach(RewardFrameScript frame in frames) {
+            
             frame.gameObject.SetActive(false);
         }
 

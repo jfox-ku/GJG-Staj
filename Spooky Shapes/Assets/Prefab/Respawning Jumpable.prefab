@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6612403739979457332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 450742308618979833}
+  - component: {fileID: 3453034876075969972}
+  m_Layer: 0
+  m_Name: Respawning Jumpable
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &450742308618979833
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6612403739979457332}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.07, y: 1.06, z: -2.7774093}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3453034876075969972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6612403739979457332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f15f1d26410c8847bf80b9bdf1d8971, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Jumpables:
+  - {fileID: 9200856735048209627, guid: 5c52363ceb8f4a143b96e95a3ee3a8ee, type: 3}
+  - {fileID: 3848350772925435689, guid: 7c722683ad0ec8a4198cdf6f98894cea, type: 3}
+  - {fileID: 3966527959438499343, guid: 2edbe535af833eb449dcf0716a896aa9, type: 3}
+  RandomSpawn: 1
+  jumpableChoice: 0
+  spawnCooldown: 1

@@ -47,11 +47,12 @@ public class RunManagerScript : MonoBehaviour
     private void Initialize() {
 
         player = GameObject.FindGameObjectWithTag("Player");
-        Instantiate(testingPiece, new Vector2(0,-2f),Quaternion.identity);
+        //Instantiate(testingPiece, new Vector2(0,-2f),Quaternion.identity);
 
         CVM = GameObject.FindObjectOfType<CinemachineVirtualCamera>();
         CVM.Follow = player.transform;
 
+        player.GetComponent<PlayerScript>().WaitForStart();
         loadedRunParts = new Queue<GameObject>();
         set.ResetItemCount();
 

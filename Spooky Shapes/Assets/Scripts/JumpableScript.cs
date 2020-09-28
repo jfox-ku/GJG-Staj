@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class JumpableScript : MonoBehaviour
 {
@@ -12,17 +13,24 @@ public class JumpableScript : MonoBehaviour
 
     public float jumpCooldown = 0.01f;
     public bool allowJump = true;
+    public bool respawning = false;
 
     public ParticleSystem PartSys;
+    public event Action<GameObject> DestEvent;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.drag = asset.drag;
+        
         tip = asset.geoType;
         jumpForce = asset.basePushForce;
         //rb.AddTorque(Random.Range(0f,4f));
+        if (respawning) rb.drag = 1000f;
+        else {
+            rb.drag = asset.drag;
+        }
+
     }
 
     // Update is called once per frame
@@ -55,6 +63,17 @@ public class JumpableScript : MonoBehaviour
 
     public void Disable() {
         gameObject.SetActive(false);
+        if (respawning) {
+            DestEvent?.Invoke(this.gameObject);
+        }
+    }
+
+    public void Enable() {
+        gameObject.SetActive(true);
+        if (respawning) rb.drag = 1000f;
+        else {
+            rb.drag = asset.drag;
+        }
     }
 
     public void Explode() {

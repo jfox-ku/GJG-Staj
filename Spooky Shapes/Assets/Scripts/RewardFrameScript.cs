@@ -24,6 +24,8 @@ public class RewardFrameScript : MonoBehaviour
     //definetely not the best way of doing this.
     public void giveItem() {
         //Debug.Log("giveItem called on " + this.name);
+
+        //MatchBoost item gets special treatment since it has 3 internal variants for each shape.
         var reward = item.gameObject.GetComponent<MatchboostItem>();
         if (reward != null) {
             reward.ChangeType(this.tip);

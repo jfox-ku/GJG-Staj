@@ -33,41 +33,52 @@ public class PlayerScript : MonoBehaviour
 
     public List<ItemScript> inventory;
     DefaultInputManager ImInstance;
+    private bool waitingForStart;
 
     public ParticleSystem PartSys;
-
-
-    public Sprite[] Sprites;
 
     [Header("Jump stuff")]
     public float jumpMult = 1;
     public float[] itemMultipliers;
 
+    private void Awake() {
+        rb = this.GetComponent<Rigidbody2D>();
+    }
 
     void Start()
     {
-
-        DefaultInputManager.instance.InputUpEvent += InputUp;
-        DefaultInputManager.instance.InputDownEvent += InputDown;
-        DefaultInputManager.instance.InputEvent += InputDrag;
+        if (DefaultInputManager.instance != null) {
+            DefaultInputManager.instance.InputUpEvent += InputUp;
+            DefaultInputManager.instance.InputDownEvent += InputDown;
+            DefaultInputManager.instance.InputEvent += InputDrag;
+        }
 
         if (inventory == null) {
             inventory = new List<ItemScript>();
 
         }
-        rb = this.GetComponent<Rigidbody2D>();
+        
         changeType(Type.RECT);
 
     }
 
-    private void OnDestroy() {
-        DefaultInputManager.instance.InputUpEvent -= InputUp;
-        DefaultInputManager.instance.InputDownEvent -= InputDown;
-        DefaultInputManager.instance.InputEvent -= InputDrag;
+    private void OnDisable() {
+        if(DefaultInputManager.instance != null) {
+            DefaultInputManager.instance.InputUpEvent -= InputUp;
+            DefaultInputManager.instance.InputDownEvent -= InputDown;
+            DefaultInputManager.instance.InputEvent -= InputDrag;
+        }
+
+        
     }
 
     #region Input
     private void InputDown(Vector2 inp) {
+        if (waitingForStart) {
+            waitingForStart = false;
+            rb.drag = baseDrag;
+
+        }
         //Debug.Log("Input down event!");
         if (canDrag) {
 
@@ -115,7 +126,11 @@ public class PlayerScript : MonoBehaviour
     }
     #endregion
 
+    public void WaitForStart() {
+        waitingForStart = true;
+        rb.drag = 1000f;
 
+    }
 
     void FixedUpdate()
     {
@@ -124,9 +139,9 @@ public class PlayerScript : MonoBehaviour
             rb.angularVelocity = 60f;
         }
 
-        if(rb.velocity.magnitude > 30f) {
+        if(rb.velocity.magnitude > 25f) {
             //Debug.LogWarning("Max velocity reached");
-            rb.velocity = rb.velocity.normalized * 30f;
+            rb.velocity = rb.velocity.normalized * 25f;
         }
 
     }
@@ -138,20 +153,13 @@ public class PlayerScript : MonoBehaviour
         if(tip != PlayerType) {
             //Debug.Log("Change type to " + tip);
             PlayerType = tip;
-            changeSprite();
             changeCollider();
         }
         
 
     }
 
-    public void changeSprite() {
-        Sprite sprite = this.GetComponent<SpriteRenderer>().sprite;
-        sprite = Sprites[(int)PlayerType];
-
-        if(sprite!=null)
-        this.GetComponent<SpriteRenderer>().sprite = sprite;  
-    }
+    
 
     public void changeCollider() {
 

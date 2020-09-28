@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1605156783225010616}
   m_Layer: 0
   m_Name: SizeItem
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 680c0cb6b12144a4a9a801180fc3a946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: 7088195717133943867, guid: e3700cf96600b224784619bb73c3e422, type: 3}
+  itemSprite: {fileID: -4821712875577520519, guid: b8e6f67fb87f11f49963949fefba69af, type: 3}
   itemImage: {fileID: 1605156783225010616}
   count: 0
   itemName: sizeItem
@@ -82,7 +82,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3478551600369740364, guid: e3700cf96600b224784619bb73c3e422, type: 3}
+  m_Sprite: {fileID: -4821712875577520519, guid: b8e6f67fb87f11f49963949fefba69af, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

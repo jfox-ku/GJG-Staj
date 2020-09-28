@@ -10,6 +10,7 @@ TagManager:
   - Upzone
   - LoadNextZone
   - Item
+  - SaverItemStartPos
   layers:
   - Default
   - TransparentFX

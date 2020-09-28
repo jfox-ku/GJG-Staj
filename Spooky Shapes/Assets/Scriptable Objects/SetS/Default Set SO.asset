@@ -17,10 +17,11 @@ MonoBehaviour:
   - {fileID: 3848350772925435689, guid: 7c722683ad0ec8a4198cdf6f98894cea, type: 3}
   - {fileID: 3966527959438499343, guid: 2edbe535af833eb449dcf0716a896aa9, type: 3}
   ItemsList:
+  - {fileID: 2103038402762282609, guid: 71d18138d5687f248a0149ea26a9cbbb, type: 3}
+  - {fileID: 1869791613789173177, guid: d64a6637ca95d1a4ca2b17bf27ccd1ee, type: 3}
   - {fileID: 2743623710752520573, guid: 7d649e583fabaf34994143a4a0102a3e, type: 3}
   - {fileID: 926266060122578957, guid: 7383137fc8d73ab4c9c2c3bed22a19ec, type: 3}
-  - {fileID: 1869791613789173177, guid: d64a6637ca95d1a4ca2b17bf27ccd1ee, type: 3}
   RewardPart: {fileID: 11400000, guid: 88143c49034d321418f91c14e2f222ef, type: 2}
-  BGstartColor: {r: 1, g: 1, b: 1, a: 1}
-  BGendColor: {r: 1, g: 1, b: 1, a: 1}
+  BGstartColor: {r: 0.9990103, g: 1, b: 0.7311321, a: 1}
+  BGendColor: {r: 1, g: 0.5613208, b: 0.865717, a: 1}
   colorSwapDistanceMax: 350

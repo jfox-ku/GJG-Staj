@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5568505192610390818}
   m_Layer: 0
   m_Name: DragTimeItem
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d18053a392e77d145acf533fc2b4b616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: -1868801678021415692, guid: e3700cf96600b224784619bb73c3e422, type: 3}
+  itemSprite: {fileID: -6674708593522719104, guid: b8e6f67fb87f11f49963949fefba69af, type: 3}
   itemImage: {fileID: 5568505192610390818}
   count: 0
   itemName: dragItem
@@ -82,7 +82,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1868801678021415692, guid: e3700cf96600b224784619bb73c3e422, type: 3}
+  m_Sprite: {fileID: -6674708593522719104, guid: b8e6f67fb87f11f49963949fefba69af, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
