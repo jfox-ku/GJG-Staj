@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Rect Jumpable Asset
   m_EditorClassIdentifier: 
   geoType: 1
-  basePushForce: 450
+  basePushForce: 500
   drag: 100

@@ -21,6 +21,8 @@ public class RunManagerScript : MonoBehaviour
     public int totalLoaded;
     public Vector2 spawnPos;
 
+    public UIScoreScript UIScript;
+
     [SerializeField] private Queue<GameObject> loadedRunParts;
     public bool allowLoad = true;
     
@@ -53,6 +55,9 @@ public class RunManagerScript : MonoBehaviour
         CVM.Follow = player.transform;
 
         player.GetComponent<PlayerScript>().WaitForStart();
+        UIScript.gameStarted = false;
+        
+        
         loadedRunParts = new Queue<GameObject>();
         set.ResetItemCount();
 
@@ -65,15 +70,15 @@ public class RunManagerScript : MonoBehaviour
 
 
     //Also despawns pervious parts
+    private int totalRewardNum = 0; 
    private void SpawnPart() {
-        if(totalLoaded >= 6) {
+        if(totalLoaded >= RunParts.Count) {
             //Debug.Log("Loaded all Parts. Now getting random parts.");
             //allowLoad = false;
             toLoadIndex = Random.Range(0, RunParts.Count);
 
 
-            if(player.transform.position.y > loadedRunParts.Peek().GetComponent<RunPartScript>().GetTopPos().y)
-            Destroy(loadedRunParts.Dequeue());
+            
         }
 
         if(toLoadIndex >= RunParts.Count) toLoadIndex = Random.Range(0, RunParts.Count);
@@ -81,12 +86,13 @@ public class RunManagerScript : MonoBehaviour
         RunPartSO sp;
         if(totalLoaded > 4 && totalLoaded % 5 == 0) {
             sp = set.RewardPart;
+            
         } else {
             sp = RunParts[toLoadIndex];
         }
-        
-        
-        if(loadedRunParts.Count < 6) {
+
+        Debug.Log("Currently loaded rewardParts: "+totalRewardNum);
+        if(loadedRunParts.Count < 4 + totalRewardNum) {
 
             var part = Instantiate(sp.runPartPrefab, spawnPos, Quaternion.identity);
             var partScript = part.GetComponent<RunPartScript>();
@@ -97,6 +103,7 @@ public class RunManagerScript : MonoBehaviour
             var reward = part.GetComponent<RewardPartScript>();
             if (reward != null) {
                 reward.SetUpItems();
+                totalRewardNum++;
             }
             spawnPos.y = partScript.GetTopPos().y;
             toLoadIndex++;
@@ -116,6 +123,15 @@ public class RunManagerScript : MonoBehaviour
         if (id != lastId) {
             lastId = id;
             //Debug.Log("Loading next run part");
+            if (player.transform.position.y > loadedRunParts.Peek().GetComponent<RunPartScript>().GetTopPos().y) {
+                var partToDestroy = loadedRunParts.Dequeue();
+                if (partToDestroy.GetComponent<RewardPartScript>() != null) {
+                    totalRewardNum--;
+                    
+                }
+                Destroy(partToDestroy);
+            }
+                
             SpawnPart();
         }
 

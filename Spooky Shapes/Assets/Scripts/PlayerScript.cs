@@ -36,6 +36,7 @@ public class PlayerScript : MonoBehaviour
     private bool waitingForStart;
 
     public ParticleSystem PartSys;
+    public UIScoreScript UIScore;
 
     [Header("Jump stuff")]
     public float jumpMult = 1;
@@ -74,11 +75,7 @@ public class PlayerScript : MonoBehaviour
 
     #region Input
     private void InputDown(Vector2 inp) {
-        if (waitingForStart) {
-            waitingForStart = false;
-            rb.drag = baseDrag;
-
-        }
+        
         //Debug.Log("Input down event!");
         if (canDrag) {
 
@@ -94,6 +91,12 @@ public class PlayerScript : MonoBehaviour
 
     private void InputUp(Vector2 inp) {
         //Debug.Log("Input up event!");
+        if (waitingForStart) {
+            waitingForStart = false;
+            GameObject.FindGameObjectWithTag("TitleText").SetActive(false);
+            UIScore.gameStarted = true;
+        }
+
         if (!dragCancel && canDrag) {
             var dir = (Vector3)clampDown(inp - (Vector2)dragStartPos);
 
@@ -127,8 +130,11 @@ public class PlayerScript : MonoBehaviour
     #endregion
 
     public void WaitForStart() {
+        GameObject.FindGameObjectWithTag("TitleText").SetActive(true);
+        
         waitingForStart = true;
         rb.drag = 1000f;
+        rb.angularVelocity = UnityEngine.Random.Range(-90f,90f);
 
     }
 
@@ -173,7 +179,8 @@ public class PlayerScript : MonoBehaviour
     #endregion changestuff
 
     #region CollisionStuff
-    public float speedGainOnJump = 1.2f;
+    public float speedGainOnJump = 0.5f;
+    public float wallJumpMultiplier = 1f;
     private void OnCollisionEnter2D(Collision2D collision) {
         var obje = collision.gameObject;
         if (obje.CompareTag("Jumpable")) {
@@ -185,7 +192,7 @@ public class PlayerScript : MonoBehaviour
 
             if(WallHitCDKeeper == 0) {
                 StartCoroutine(wallHitCooldown());
-                rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
+                rb.velocity = new Vector2(-rb.velocity.x * wallJumpMultiplier, rb.velocity.y);
             }
             
 
@@ -212,11 +219,16 @@ public class PlayerScript : MonoBehaviour
 
     }
 
+    private UpzoneScript RefKeeper;
     private void OnTriggerStay2D(Collider2D collision) {
         var obje = collision.gameObject;
         if (obje.CompareTag("Upzone")) {
-            //Can this get component call be avoided? Is it bad?
-            obje.GetComponent<UpzoneScript>().MoveUpConfiner();
+            
+            if(RefKeeper == null) {
+                RefKeeper = obje.GetComponent<UpzoneScript>();
+            }
+            //Is it bad to pass the rigid body so often? Should a refence be kept in Upzone script?
+            RefKeeper.moveFollowDelta(this.transform,rb.velocity.y);
         }
 
     }

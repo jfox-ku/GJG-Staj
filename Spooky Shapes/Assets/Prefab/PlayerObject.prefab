@@ -4981,37 +4981,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e47c1478102ce7489b2a8a7c31be2cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineMat: {fileID: 2100000, guid: 616bcde00fc31144284ac197ad07e050, type: 2}
-  maxLineLength: 3
+  lineMat: {fileID: 2100000, guid: bf6f975d9c53c8343b3e55aed21532e7, type: 2}
+  maxLineLength: 2.5
   clr:
     serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
+    key0: {r: 0.6132076, g: 0, b: 0.38214916, a: 0}
+    key1: {r: 0.8584906, g: 0, b: 0.5338049, a: 0.75451404}
+    key2: {r: 1, g: 1, b: 1, a: 0.7660208}
+    key3: {r: 0, g: 0, b: 0, a: 0.751212}
+    key4: {r: 0, g: 0, b: 0, a: 0.654902}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 65535
-    ctime2: 0
+    ctime0: 771
+    ctime1: 45296
+    ctime2: 65535
     ctime3: 0
     ctime4: 0
     ctime5: 0
     ctime6: 0
     ctime7: 0
     atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
+    atime1: 4626
+    atime2: 20432
+    atime3: 50115
+    atime4: 65535
     atime5: 0
     atime6: 0
     atime7: 0
     m_Mode: 0
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
+    m_NumColorKeys: 3
+    m_NumAlphaKeys: 5
 --- !u!1 &630542675936503354
 GameObject:
   m_ObjectHideFlags: 0
@@ -5062,7 +5062,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 0e053576e7dc77344aac1eccf6df2313, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5110,7 +5110,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6284217234699380291
 Transform:
   m_ObjectHideFlags: 0
@@ -5216,7 +5216,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 4ac4b1f47bd69ba48931e5d425f1cb58, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5299,7 +5299,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5395,7 +5395,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5478,7 +5478,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5575,7 +5575,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5671,7 +5671,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5720,7 +5720,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8637645949928386302
 Transform:
   m_ObjectHideFlags: 0
@@ -5845,12 +5845,14 @@ MonoBehaviour:
   dragSlowMultiplier: 0.95
   inventory: []
   PartSys: {fileID: 0}
+  UIScore: {fileID: 0}
   jumpMult: 1
   itemMultipliers:
   - 0
   - 0
   - 0
   speedGainOnJump: 1.2
+  wallJumpMultiplier: 1
   itemDragWait: 0
 --- !u!50 &8637645950300003842
 Rigidbody2D:
@@ -5893,7 +5895,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: bf6f975d9c53c8343b3e55aed21532e7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5913,17 +5915,17 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 392088685
   m_SortingLayer: 3
-  m_SortingOrder: 8
-  m_Time: 2
+  m_SortingOrder: 122
+  m_Time: 1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.5
+    widthMultiplier: 0.46085364
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.80555534
+        value: 0.07221985
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -5931,41 +5933,14 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.04714081
-        value: 0.21568465
-        inSlope: -5.051838
-        outSlope: -5.051838
-        tangentMode: 0
+        time: 0.23713943
+        value: 0.31569076
+        inSlope: 3.4791868
+        outSlope: 0
+        tangentMode: 1
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.28763795
-        value: 0.17994845
-        inSlope: -3.9888654
-        outSlope: -3.9888654
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.35763803
-        outWeight: 0.21810019
-      - serializedVersion: 3
-        time: 0.53918314
-        value: 0.14935772
-        inSlope: -1.412159
-        outSlope: -1.412159
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.29506025
-        outWeight: 0.12565987
-      - serializedVersion: 3
-        time: 0.8899764
-        value: 0.1424754
-        inSlope: -0.06927416
-        outSlope: -0.06927416
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0.16715662
+        outWeight: 0.22659524
       - serializedVersion: 3
         time: 1
         value: 0.03888889
@@ -6106,7 +6081,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8637645951199106008
 Transform:
   m_ObjectHideFlags: 0
@@ -6202,7 +6177,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: e02049e36e6171e4d8d0bc4a7a2ab9df, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6284,7 +6259,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

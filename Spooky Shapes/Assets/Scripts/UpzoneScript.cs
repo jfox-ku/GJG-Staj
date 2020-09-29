@@ -44,7 +44,20 @@ public class UpzoneScript : MonoBehaviour
         
     }
 
+    private Vector3 playerLastPos;
+    public void moveFollowDelta(Transform player,float velocityY) {
+        if (playerLastPos == null) playerLastPos = player.position;
+        var offset = player.position - playerLastPos;
+        if (velocityY > 0 && offset!=Vector3.zero) {
+            //Debug.Log("parentPos: "+parent.position);
+            parent.position = new Vector3(this.parent.position.x,this.parent.position.y+velocityY/10f,this.parent.position.z);
+        }
+        
 
+
+        playerLastPos = player.position;
+
+    }
    
 
 

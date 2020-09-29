@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: CircJumpable Asset
   m_EditorClassIdentifier: 
   geoType: 2
-  basePushForce: 500
+  basePushForce: 550
   drag: 70
