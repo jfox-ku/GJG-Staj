@@ -7,7 +7,7 @@ public class RespawnJumpableScript : MonoBehaviour
 {
 
     public List<GameObject> Jumpables;
-    private JumpableScript jump;
+    public GameObject currentPiece;
     public bool RandomSpawn = true;
     public int jumpableChoice;
     public float spawnCooldown = 0.2f;
@@ -31,11 +31,9 @@ public class RespawnJumpableScript : MonoBehaviour
     }
 
     public void Respawn(GameObject imp) {
-        //Debug.Log("Respawn called");       
-        if (jump != null) {
-            StartCoroutine(waitAndRespawn());
+        Debug.Log("Respawn called");       
+        StartCoroutine(waitAndRespawn());
 
-        }
 
 
     }
@@ -44,25 +42,29 @@ public class RespawnJumpableScript : MonoBehaviour
     public void Spawn(GameObject imp) {
         if (imp == null) {
             var toSpawn = Jumpables[UnityEngine.Random.Range(0, Jumpables.Count)];
-            var obj = Instantiate(toSpawn, transform.position, Quaternion.identity, this.transform);
-            jump = obj.GetComponent<JumpableScript>();
+            var obj = JumpablePoolManager.instance.Retrieve(toSpawn.GetComponent<JumpableScript>().tip);
+            obj.transform.position = transform.position;
+            var jump = obj.GetComponent<JumpableScript>();
             jump.respawning = true;
             jump.DestEvent += Respawn;
+            currentPiece = obj;
 
         } else {
             var toSpawn = imp;
-            var obj = Instantiate(toSpawn, transform.position, Quaternion.identity, this.transform);
-            jump = obj.GetComponent<JumpableScript>();
+            var obj = JumpablePoolManager.instance.Retrieve(toSpawn.GetComponent<JumpableScript>().tip);
+            obj.transform.position = transform.position;
+            var jump = obj.GetComponent<JumpableScript>();
             jump.respawning = true;
             jump.DestEvent += Respawn;
+            currentPiece = obj;
         }
         
         
     }
 
 
-    private void OnDisable() {
-        if (jump != null) jump.DestEvent -= Respawn;
+    private void OnDestroy() {
+        
     }
 
 
@@ -70,10 +72,17 @@ public class RespawnJumpableScript : MonoBehaviour
        // Debug.Log("Waiting...");
         yield return new WaitForSeconds(spawnCooldown);
         //Debug.Log("Spawning back.");
-        jump.Enable();
-        jump.transform.position = this.transform.position;
+        Spawn(null);
+       
 
 
     }
+
+    public void Destroy() {
+        var js = currentPiece.GetComponent<JumpableScript>();
+        js.unloadDisable();
+        Destroy(this.gameObject);
+    }
+
 
 }

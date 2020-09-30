@@ -25,10 +25,10 @@ public class RunManagerScript : MonoBehaviour
 
     [SerializeField] private Queue<GameObject> loadedRunParts;
     public bool allowLoad = true;
+
+
+
     
-
-
-
     public delegate void PartsDelegate();
     public PartsDelegate upTrigger;
 
@@ -36,6 +36,7 @@ public class RunManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Application.targetFrameRate = 60;
         Initialize();
     }
 
@@ -91,7 +92,7 @@ public class RunManagerScript : MonoBehaviour
             sp = RunParts[toLoadIndex];
         }
 
-        Debug.Log("Currently loaded rewardParts: "+totalRewardNum);
+        //Debug.Log("Currently loaded rewardParts: "+totalRewardNum);
         if(loadedRunParts.Count < 4 + totalRewardNum) {
 
             var part = Instantiate(sp.runPartPrefab, spawnPos, Quaternion.identity);
@@ -119,8 +120,10 @@ public class RunManagerScript : MonoBehaviour
 
     private int lastId = -1;
     public void LoadNextPart(int id) {
-        //Instantiate(testingPiece, new Vector2(player.transform.position.x, player.transform.position.y-2f), Quaternion.identity);
-        if (id != lastId) {
+        
+        if (id > lastId) {
+            //Debug.Log("Loadzone called on runPart ID: " + id);
+            //Instantiate(testingPiece, new Vector2(player.transform.position.x, player.transform.position.y - 2f), Quaternion.identity);
             lastId = id;
             //Debug.Log("Loading next run part");
             if (player.transform.position.y > loadedRunParts.Peek().GetComponent<RunPartScript>().GetTopPos().y) {
@@ -129,7 +132,7 @@ public class RunManagerScript : MonoBehaviour
                     totalRewardNum--;
                     
                 }
-                Destroy(partToDestroy);
+                partToDestroy.GetComponent<RunPartScript>().Destroy();
             }
                 
             SpawnPart();

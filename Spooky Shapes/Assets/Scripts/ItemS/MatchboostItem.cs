@@ -30,7 +30,7 @@ public class MatchboostItem : ItemScript
         itemName = "matchBoostItem" + pieceType.ToString();
         //Debug.Log("PieceType index: "+(int)pieceType);
         pieceCounts[(int)pieceType]++;
-        Debug.Log(itemName + " was picked up. Currently has "+ pieceCounts[(int)pieceType]+" of this type "+pieceType);
+        //Debug.Log(itemName + " was picked up. Currently has "+ pieceCounts[(int)pieceType]+" of this type "+pieceType);
         effector();
     }
 

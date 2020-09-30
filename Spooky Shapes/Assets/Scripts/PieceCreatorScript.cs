@@ -13,8 +13,13 @@ public class PieceCreatorScript : MonoBehaviour
     private float nextGenCooldown;
     private float speed;
     private bool doesGenerate = false;
+    private Queue<JumpableScript> myPieces;
+
 
     // Start is called before the first frame update
+    private void Start() {
+        
+    }
 
     public void startAsset() {
         if (asset != null) {
@@ -24,6 +29,7 @@ public class PieceCreatorScript : MonoBehaviour
             speed = asset.travelTime;
             nextGenCooldown = asset.nextGenCooldown;
             doesGenerate = true;
+            myPieces = new Queue<JumpableScript>();
             
         }
     }
@@ -54,11 +60,17 @@ public class PieceCreatorScript : MonoBehaviour
 
 
 
+   
     private IEnumerator Generator(int num, float cooldown, float speed) {
         GameObject sp = toSpawn;
+        
+        Type toSpawnType = toSpawn.GetComponent<JumpableScript>().tip;
+        if (JumpablePoolManager.instance == null) Debug.LogError("PoolManager is empty!!!");
         for (int i = 0; i< num; i++) {
             //Debug.Log("Object generated at " + Time.time);
-            var obj = Instantiate(sp, this.transform);
+            var obj = JumpablePoolManager.instance.Retrieve(toSpawnType);
+            obj.GetComponent<JumpableScript>().respawning = false;
+            myPieces.Enqueue(obj.GetComponent<JumpableScript>());
             StartCoroutine(MovePiece(obj, speed));
             yield return new WaitForSeconds(cooldown);
         }
@@ -74,9 +86,29 @@ public class PieceCreatorScript : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         //Debug.Log("Reached Target.");
-        Destroy(obj);
+        if (obj.activeInHierarchy)
+            obj.GetComponent<JumpableScript>().moveEndDisable();
     }
 
 
+    public void Destroy() {
+        StopAllCoroutines();
+        int counter = 0;
+        int nullCounter = 0;
+        foreach (JumpableScript jj in myPieces) {
+            if (jj != null && jj.gameObject.activeInHierarchy) {
+                jj.Disable();
+                counter++;
+            } else {
+                nullCounter++;
+            }
+           
+
+
+        }
+
+        //Debug.Log("Destroyed "+counter+" active pieces. I was holding "+nullCounter+" null pieces");
+        myPieces.Clear();
+    }
 
 }

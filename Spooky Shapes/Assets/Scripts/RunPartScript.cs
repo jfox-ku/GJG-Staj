@@ -8,6 +8,7 @@ public class RunPartScript : MonoBehaviour
     public int id;
 
     public List<PieceCreatorScript> pclst;
+    public List<RespawnJumpableScript> respawninglst;
     public SetSO set;
 
     public Transform TOP;
@@ -58,5 +59,18 @@ public class RunPartScript : MonoBehaviour
        // Debug.Log("Top pos:"+ TOP.position);
         return TOP.position;
     }
+
+    public void Destroy() {
+        foreach(PieceCreatorScript ps in pclst) {
+            ps.Destroy();
+        }
+
+        foreach(RespawnJumpableScript js in respawninglst) {
+            js.Destroy();
+        }
+        Destroy(this.gameObject);
+
+    }
+
 
 }

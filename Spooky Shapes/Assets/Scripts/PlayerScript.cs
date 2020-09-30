@@ -35,7 +35,7 @@ public class PlayerScript : MonoBehaviour
     DefaultInputManager ImInstance;
     private bool waitingForStart;
 
-    public ParticleSystem PartSys;
+    public ParticleMamagerScript ParticleManager;
     public UIScoreScript UIScore;
 
     [Header("Jump stuff")]
@@ -122,6 +122,10 @@ public class PlayerScript : MonoBehaviour
 
     private void InputDrag(Vector2 inp) {
         //Debug.Log("Input drag event!");
+        if (inventory == null) {
+            inventory = new List<ItemScript>();
+
+        }
         if (!dragCancel && canDrag) {
             var dir = (Vector3)clampDown(inp - (Vector2)dragStartPos);
             dragDrawer.UpdateLine(transform.position, transform.position + dir / 250f);
@@ -244,6 +248,7 @@ public class PlayerScript : MonoBehaviour
         if (jumpable.tip == PlayerType) {
             jumpMultiplier = 2;
             jumpable.Explode();
+            ParticleManager.Play(PlayerType,obje.transform.position);
         }
 
 
@@ -259,10 +264,10 @@ public class PlayerScript : MonoBehaviour
 
         //Shake is weird right now. Need better numbers? (seems to overshoot and bug out)
         //CinemachineShakeScript.Instance.ShakeCamera(0.5f* jumpMultiplier, 0.2f);
-        
-        jumpable.Disable();
+
     }
 
+   
 
     private IEnumerator wallHitCooldown() {
         while (WallHitCDKeeper > 0) {
@@ -295,10 +300,7 @@ public class PlayerScript : MonoBehaviour
     #region Items
     public void addToInventory(ItemScript item) {
         
-        if(inventory == null) {
-            inventory = new List<ItemScript>();
-
-        }
+        
 
         bool found = false;
         foreach (ItemScript i in inventory) {
