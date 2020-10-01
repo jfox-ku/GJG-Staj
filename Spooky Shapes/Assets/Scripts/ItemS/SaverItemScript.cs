@@ -32,7 +32,7 @@ public class SaverItemScript : ItemScript
         }
 
         JS.respawning = true;
-        Debug.Log("Saver jumpforce set to: " + JS.jumpForce+". Base was: "+JS.asset.basePushForce);
+        //Debug.Log("Saver jumpforce set to: " + JS.jumpForce+". Base was: "+JS.asset.basePushForce);
 
     }
 

@@ -15,6 +15,7 @@ public class InventoryDisplayUI : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        offset = Screen.width / 8f+2f;
         PiecesList = new List<ItemDisplayPieceUI>();
         var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
         player.InventoryEvent += UpdateInventory;

@@ -8,6 +8,7 @@ public class DragLineDrawer : MonoBehaviour
     public Material lineMat;
     public float maxLineLength;
     public Gradient clr;
+    public float currentLengthPercent = 0;
 
     #region linestuff
     public void DrawLine(Vector2 start, Vector2 end) {
@@ -24,6 +25,7 @@ public class DragLineDrawer : MonoBehaviour
             this.lineRenderer = lineObject.AddComponent<LineRenderer>();
 
         }
+        currentLengthPercent = Vector2.Distance(start, end)/maxLineLength;
 
         this.lineRenderer.startWidth = 0.15f;
         this.lineRenderer.endWidth = 0.05f;
@@ -46,6 +48,7 @@ public class DragLineDrawer : MonoBehaviour
             return;
         }
         Vector3[] arr = { start, end };
+        currentLengthPercent = Vector2.Distance(start, end) / maxLineLength;
         this.lineRenderer.SetPositions(arr);
 
     }
@@ -53,6 +56,7 @@ public class DragLineDrawer : MonoBehaviour
     public void DestroyLine() {
         if (lineRenderer != null) {
             Destroy(lineRenderer.gameObject);
+            currentLengthPercent = 0;
         }
 
     }

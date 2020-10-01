@@ -21,7 +21,7 @@ public class SizeItemScript : ItemScript
 
         
         var newScale = new Vector3(1f + count / 10f, 1f + count/ 10f, 1);
-        Debug.Log("Setting player size to " + newScale);
+        //Debug.Log("Setting player size to " + newScale);
         player.transform.localScale = newScale;
 
     }

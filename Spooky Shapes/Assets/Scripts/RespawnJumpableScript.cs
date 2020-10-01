@@ -31,7 +31,7 @@ public class RespawnJumpableScript : MonoBehaviour
     }
 
     public void Respawn(GameObject imp) {
-        Debug.Log("Respawn called");       
+        //Debug.Log("Respawn called");       
         StartCoroutine(waitAndRespawn());
 
 

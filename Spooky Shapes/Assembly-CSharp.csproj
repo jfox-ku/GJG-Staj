@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scriptable Objects\JumpableSO.cs" />
     <Compile Include="Assets\Scripts\CustomSceneManager.cs" />
     <Compile Include="Assets\Scripts\ItemS\SaverItemScript.cs" />
+    <Compile Include="Assets\ParticleMamagerScript.cs" />
     <Compile Include="Assets\Scripts\JumpableScript.cs" />
     <Compile Include="Assets\Scripts\PieceCreatorScript.cs" />
     <Compile Include="Assets\Scripts\InactiveCollector.cs" />
@@ -89,12 +90,12 @@
     <Compile Include="Assets\Scriptable Objects\RunPartSO.cs" />
     <Compile Include="Assets\Scripts\ColliderType.cs" />
     <Compile Include="Assets\Scriptable Objects\SetSO.cs" />
+    <Compile Include="Assets\JumpablePoolManager.cs" />
     <Compile Include="Assets\Scripts\ItemS\MatchboostItem.cs" />
     <Compile Include="Assets\Scripts\UpzoneScript.cs" />
     <Compile Include="Assets\Scripts\InventoryDisplayUI.cs" />
     <Compile Include="Assets\Scripts\CinemachineShakeScript.cs" />
-    <Compile Include="Assets\ParticleMamagerScript.cs" />
-    <Compile Include="Assets\JumpablePoolManager.cs" />
+    <Compile Include="Assets\PushForceItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />

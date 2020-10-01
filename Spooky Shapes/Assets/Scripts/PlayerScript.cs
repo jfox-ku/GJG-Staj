@@ -21,9 +21,11 @@ public class PlayerScript : MonoBehaviour
     public Vector3 dragStartPos;
     public bool canDrag = true;
     public bool isDragging = false;
-    public float throwMultiplier = 12f;
+    public float throwBase = 8f;
+    public float throwMultiplier = 0f;
     public float dragSlowMultiplier = 19f / 20f;
     private bool dragCancel = false;
+    public float maxSpeed = 25f;
 
 
     [Header("Collision stuff")]
@@ -109,7 +111,7 @@ public class PlayerScript : MonoBehaviour
             StopCoroutine(dragLerper(baseDrag));
             rb.drag = baseDrag;
             rb.velocity = new Vector2(rb.velocity.x, 0);
-            rb.AddForce((Vector2)dir.normalized * throwMultiplier, ForceMode2D.Impulse);
+            rb.AddForce((Vector2)dir.normalized * (throwMultiplier+throwBase) * Mathf.Max(0.5f,dragDrawer.currentLengthPercent), ForceMode2D.Impulse);
             canDrag = false;
             isDragging = false;
         }
@@ -144,14 +146,14 @@ public class PlayerScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(rb.angularVelocity > 60f) {
+        if(rb.angularVelocity > 45f) {
             //Debug.LogWarning("Angular Velocity Over 60 Deg");
-            rb.angularVelocity = 60f;
+            rb.angularVelocity = 45f;
         }
 
-        if(rb.velocity.magnitude > 25f) {
+        if(rb.velocity.magnitude > maxSpeed) {
             //Debug.LogWarning("Max velocity reached");
-            rb.velocity = rb.velocity.normalized * 25f;
+            rb.velocity = rb.velocity.normalized * maxSpeed;
         }
 
     }
@@ -194,10 +196,15 @@ public class PlayerScript : MonoBehaviour
             
         }else if (obje.CompareTag("Wall")) {
 
-            if(WallHitCDKeeper == 0) {
-                StartCoroutine(wallHitCooldown());
-                rb.velocity = new Vector2(-rb.velocity.x * wallJumpMultiplier, rb.velocity.y);
-            }
+            Debug.Log("Collided with wall!");
+            Vector2 direction = -(this.transform.position - obje.transform.position).normalized;
+            direction.y =  0;    
+
+            var wallPush = direction * (throwBase + throwMultiplier);
+            Debug.Log("Adding force "+wallPush);
+            rb.AddForce(wallPush,ForceMode2D.Impulse);
+            //rb.velocity = new Vector2(-rb.velocity.x * wallJumpMultiplier, rb.velocity.y);
+            
             
 
         }
@@ -308,7 +315,7 @@ public class PlayerScript : MonoBehaviour
                 
                 i.AddItem();
                 i.OnPickUp();
-                Debug.Log("Player has item " + item.itemName +" Count: "+i.count);
+                //Debug.Log("Player has item " + item.itemName +" Count: "+i.count);
                 InventoryEvent?.Invoke(inventory);
                 found = true;
             }
