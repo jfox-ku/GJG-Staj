@@ -77,10 +77,11 @@ public class RespawnJumpableScript : MonoBehaviour
     }
 
     public void Destroy() {
+        StopAllCoroutines();
         if (currentPiece != null) {
             var js = currentPiece.GetComponent<JumpableScript>();
             //js.DestEvent -= Respawn;
-            StopAllCoroutines();
+            
             js.Disable();
         }
         

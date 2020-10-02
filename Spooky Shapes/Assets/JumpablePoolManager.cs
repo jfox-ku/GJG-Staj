@@ -30,7 +30,7 @@ public class JumpablePoolManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        Debug.Log("Start on Pool called");
+        //Debug.Log("Start on Pool called");
         ListOfQueues = new List<Queue<GameObject>>(JumpablePrefabs.Count);
         
 
@@ -46,7 +46,7 @@ public class JumpablePoolManager : MonoBehaviour
                 var obj = Instantiate(pref,this.transform);
                 var js = obj.GetComponent<JumpableScript>();
 
-                js.DestEvent += Deactivate;
+                //js.DestEvent += Deactivate;
 
                 obj.SetActive(false);
                 queue.Enqueue(obj);
@@ -70,6 +70,10 @@ public class JumpablePoolManager : MonoBehaviour
         if (!GameObject.Equals(ListOfQueues[(int)tip], queue)) {
             Debug.LogError("Queue reference is not held!");
             
+        }
+
+        if (queue.Count == 0) {
+            FindUnused(tip);
         }
        
         if (queue.Count!=0) {
@@ -106,8 +110,8 @@ public class JumpablePoolManager : MonoBehaviour
 
 
         } else {
-            Repopulate(queue, tip);
-            return Retrieve(tip);
+      
+   
 
 
         }
@@ -121,42 +125,38 @@ public class JumpablePoolManager : MonoBehaviour
 
     }
 
-    //This should never run. Here for debugging
-    private void Repopulate(Queue<GameObject> qq,Type tip) {
-        Debug.LogError("Queue repopulated with inactive objects of type "+tip);
-        var children = GetComponentsInChildren<JumpableScript>();
-        foreach(JumpableScript js in children) {
-            if(js.tip == tip && !js.gameObject.activeInHierarchy) {
-                qq.Enqueue(js.gameObject);
-            }
+    private void CreatePiece(Type tip) {
+        Queue<GameObject> queue = ListOfQueues[(int)tip];
+        var obj = Instantiate(JumpablePrefabs[(int)tip], this.transform);
+        var js = obj.GetComponent<JumpableScript>();
 
-        }
+        //js.DestEvent += Deactivate;
 
+        obj.SetActive(false);
+        queue.Enqueue(obj);
 
     }
 
 
-    //This should never run, but its here in just in case, for debugging
     private GameObject FindUnused(Type tip) {
         
         var children = GetComponentsInChildren<JumpableScript>();
-        Debug.LogError("I have "+ children.Length+" total children. Finding an unused one of type "+tip);
-
         foreach(JumpableScript js in children) {
             if (js.tip == tip) {
                 if (!js.gameObject.activeInHierarchy) {
                     js.DestEvent += Deactivate;
-                    Debug.Log("Found unused of type "+js.tip);
+                    Debug.LogError("Found unused of type "+js.tip+". How did you get out my boy?");
                     return js.gameObject;
                 }
                 
             }
         }
 
-        Debug.LogError("Max Num of " + tip + " reached. If this happens, pieces decide to randomly disappear.");
-        printQueues();
+        Debug.Log("Couldn't find inactive piece of type " + tip + " . Creating new one..");
+        //printQueues();
         var obje = Instantiate(JumpablePrefabs[(int)tip], this.transform);
         obje.GetComponent<JumpableScript>().DestEvent += Deactivate;
+        obje.GetComponent<JumpableScript>().respawning = false;
         obje.SetActive(true);
         obje.transform.rotation = Quaternion.identity;
         return obje;
