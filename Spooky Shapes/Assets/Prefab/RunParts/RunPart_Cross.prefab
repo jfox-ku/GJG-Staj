@@ -205,6 +205,7 @@ MonoBehaviour:
   - {fileID: 6016769689778136750}
   - {fileID: 9057498173907226723}
   - {fileID: 3509639439556110437}
+  respawninglst: []
   set: {fileID: 11400000, guid: b93db61b37fc563418ef9b0db8622c8e, type: 2}
   TOP: {fileID: 1349432676492259539}
   BOT: {fileID: 8417045368625879752}
@@ -288,7 +289,7 @@ SpriteRenderer:
   m_Size: {x: 7.49, y: 4.42}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &2298818775817392990

@@ -15,6 +15,7 @@ public class JumpablePoolManager : MonoBehaviour
         get {
             if (internalInstance == null) {
                 internalInstance = GameObject.FindObjectOfType<JumpablePoolManager>();
+                
                 return internalInstance;
             } else {
                 return internalInstance;
@@ -31,6 +32,7 @@ public class JumpablePoolManager : MonoBehaviour
     {
         Debug.Log("Start on Pool called");
         ListOfQueues = new List<Queue<GameObject>>(JumpablePrefabs.Count);
+        
 
             foreach(GameObject pref in JumpablePrefabs) {
             var prefabType = pref.GetComponent<JumpableScript>().tip;
@@ -52,6 +54,7 @@ public class JumpablePoolManager : MonoBehaviour
 
 
         }
+        //printQueues();
         
     }
 
@@ -63,56 +66,145 @@ public class JumpablePoolManager : MonoBehaviour
 
 
     public GameObject Retrieve(Type tip) {
-        var queue = ListOfQueues[(int)tip];
-
+        Queue<GameObject> queue = ListOfQueues[(int)tip];
+        if (!GameObject.Equals(ListOfQueues[(int)tip], queue)) {
+            Debug.LogError("Queue reference is not held!");
+            
+        }
        
         if (queue.Count!=0) {
-            var obj = queue.Dequeue();
-            while (obj.activeInHierarchy) {
+            GameObject obj = null;
+            int loopCount = 0;
+            while (queue.Count >0) {
+                loopCount++;
                 //Debug.LogError("Object was already active!!!");
                 
                 obj = queue.Dequeue();
-                if (obj == null) break;
+                if (obj == null) {
+                    Debug.LogError("Qeueue depleted. Shouldn't happen!");
+                }
+                if (!obj.activeSelf) {
+                    //Debug.Log("Found an inactive object of type "+tip+" in "+loopCount+" tries. Queue has " + queue.Count+" elements left");
+                    break;
+
+                }
+                Debug.LogError("First object dequed was already active!");
+
+                
             }
             //Debug.Log("Queue Count:" + queue.Count + "  Type of Queues: " + obj.GetComponent<JumpableScript>().tip);
             if (obj != null) {
                 obj.gameObject.SetActive(true);
                 obj.GetComponent<JumpableScript>().DestEvent += Deactivate;
                 obj.transform.rotation = Quaternion.identity;
-
+                obj.GetComponent<JumpableScript>().respawning = false;
                 return obj;
 
             }
 
 
-        } 
 
-            
-            Debug.LogError("Max Num of "+tip+ " reached. If this happens, pieces decide to randomly disappear.");
-            var obje = Instantiate(JumpablePrefabs[(int)tip],this.transform);
-            obje.GetComponent<JumpableScript>().DestEvent += Deactivate;
-            obje.SetActive(true);
-            obje.transform.rotation = Quaternion.identity;
-            return obje;
 
+        } else {
+            Repopulate(queue, tip);
+            return Retrieve(tip);
+
+
+        }
+
+        return FindUnused(tip);
+
+
+
+
+
+
+    }
+
+    //This should never run. Here for debugging
+    private void Repopulate(Queue<GameObject> qq,Type tip) {
+        Debug.LogError("Queue repopulated with inactive objects of type "+tip);
+        var children = GetComponentsInChildren<JumpableScript>();
+        foreach(JumpableScript js in children) {
+            if(js.tip == tip && !js.gameObject.activeInHierarchy) {
+                qq.Enqueue(js.gameObject);
+            }
+
+        }
+
+
+    }
+
+
+    //This should never run, but its here in just in case, for debugging
+    private GameObject FindUnused(Type tip) {
         
+        var children = GetComponentsInChildren<JumpableScript>();
+        Debug.LogError("I have "+ children.Length+" total children. Finding an unused one of type "+tip);
 
-   
+        foreach(JumpableScript js in children) {
+            if (js.tip == tip) {
+                if (!js.gameObject.activeInHierarchy) {
+                    js.DestEvent += Deactivate;
+                    Debug.Log("Found unused of type "+js.tip);
+                    return js.gameObject;
+                }
+                
+            }
+        }
+
+        Debug.LogError("Max Num of " + tip + " reached. If this happens, pieces decide to randomly disappear.");
+        printQueues();
+        var obje = Instantiate(JumpablePrefabs[(int)tip], this.transform);
+        obje.GetComponent<JumpableScript>().DestEvent += Deactivate;
+        obje.SetActive(true);
+        obje.transform.rotation = Quaternion.identity;
+        return obje;
+
     }
 
 
     public static void Deactivate(GameObject jj) {
         //Debug.Log(jj.name+" is deactivated and put back in pool.");
+        if (!jj.activeInHierarchy) return;
         var js = jj.GetComponent<JumpableScript>();
-        
         js.DestEvent -= Deactivate;
         jj.SetActive(false);
-        if (js.respawning) return;
-        else {
-            var queue = ListOfQueues[(int)js.tip];
-            queue.Enqueue(js.gameObject);
-        }
+        var queue = ListOfQueues[(int)js.tip];
+        //Debug.Log("Back in the queue! " + js.tip+" Size: "+queue.Count);
+        queue.Enqueue(js.gameObject);
+
         
+
+
+    }
+
+
+    private void printQueues() {
+        foreach(Queue<GameObject> queue in ListOfQueues) {
+            if(queue.Count != 0) {
+                Type tip = queue.Peek().GetComponent<JumpableScript>().tip;
+                Debug.Log("Queue of "+tip+" and size "+queue.Count );
+                string output = "";
+                foreach(var x in queue.ToArray()) {
+                    if (x.activeInHierarchy) output += " 1 ";
+                    else {
+                        output += 0;
+                    }
+                }
+                Debug.Log(output);
+
+
+            } else {
+                Debug.Log("Queue is empty");
+
+            }
+
+
+
+
+        }
+
 
 
     }

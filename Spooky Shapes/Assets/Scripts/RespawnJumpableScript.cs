@@ -9,18 +9,16 @@ public class RespawnJumpableScript : MonoBehaviour
     public List<GameObject> Jumpables;
     public GameObject currentPiece;
     public bool RandomSpawn = true;
-    public int jumpableChoice;
+    public Type jumpableChoice;
     public float spawnCooldown = 0.2f;
 
     // Start is called before the first frame update
     void Start()
     {
+        Create(jumpableChoice);
 
-        if (RandomSpawn) {
-            Spawn(null);
-        } else if(jumpableChoice < Jumpables.Count){
-            Spawn(Jumpables[jumpableChoice]);
-        }
+
+        
         
     }
 
@@ -30,37 +28,37 @@ public class RespawnJumpableScript : MonoBehaviour
         
     }
 
-    public void Respawn(GameObject imp) {
+    public void Respawn(Type imp) {
         //Debug.Log("Respawn called");       
-        StartCoroutine(waitAndRespawn());
+        StartCoroutine(waitAndRespawn(imp));
 
 
+
+    }
+
+    public void Create(Type tip) {
+        GameObject toSpawn;
+        GameObject piece;
+        JumpableScript js;
+
+        if (RandomSpawn) {
+            toSpawn = Jumpables[UnityEngine.Random.Range(0, Jumpables.Count)];
+            piece = JumpablePoolManager.instance.Retrieve(toSpawn.GetComponent<JumpableScript>().tip);
+            js = piece.GetComponent<JumpableScript>();
+            
+        } else {
+
+            piece = JumpablePoolManager.instance.Retrieve(tip);
+            js = piece.GetComponent<JumpableScript>();
+
+        }
+        currentPiece = piece;
+        piece.transform.position = this.transform.position;
+        
+        js.SetAsRespawning(this);
 
     }
     
-
-    public void Spawn(GameObject imp) {
-        if (imp == null) {
-            var toSpawn = Jumpables[UnityEngine.Random.Range(0, Jumpables.Count)];
-            var obj = JumpablePoolManager.instance.Retrieve(toSpawn.GetComponent<JumpableScript>().tip);
-            obj.transform.position = transform.position;
-            var jump = obj.GetComponent<JumpableScript>();
-            jump.respawning = true;
-            jump.DestEvent += Respawn;
-            currentPiece = obj;
-
-        } else {
-            var toSpawn = imp;
-            var obj = JumpablePoolManager.instance.Retrieve(toSpawn.GetComponent<JumpableScript>().tip);
-            obj.transform.position = transform.position;
-            var jump = obj.GetComponent<JumpableScript>();
-            jump.respawning = true;
-            jump.DestEvent += Respawn;
-            currentPiece = obj;
-        }
-        
-        
-    }
 
 
     private void OnDestroy() {
@@ -68,20 +66,24 @@ public class RespawnJumpableScript : MonoBehaviour
     }
 
 
-    public IEnumerator waitAndRespawn() {
+    public IEnumerator waitAndRespawn(Type tip) {
        // Debug.Log("Waiting...");
         yield return new WaitForSeconds(spawnCooldown);
         //Debug.Log("Spawning back.");
-        Spawn(null);
+        Create(tip);
        
 
 
     }
 
     public void Destroy() {
-        var js = currentPiece.GetComponent<JumpableScript>();
-        js.unloadDisable();
-        Destroy(this.gameObject);
+        if (currentPiece != null) {
+            var js = currentPiece.GetComponent<JumpableScript>();
+            //js.DestEvent -= Respawn;
+            StopAllCoroutines();
+            js.Disable();
+        }
+        
     }
 
 

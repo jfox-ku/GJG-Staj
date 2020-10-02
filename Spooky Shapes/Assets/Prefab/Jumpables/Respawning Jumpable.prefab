@@ -47,6 +47,7 @@ MonoBehaviour:
   - {fileID: 9200856735048209627, guid: 5c52363ceb8f4a143b96e95a3ee3a8ee, type: 3}
   - {fileID: 3848350772925435689, guid: 7c722683ad0ec8a4198cdf6f98894cea, type: 3}
   - {fileID: 3966527959438499343, guid: 2edbe535af833eb449dcf0716a896aa9, type: 3}
+  currentPiece: {fileID: 0}
   RandomSpawn: 1
-  jumpableChoice: 0
+  jumpableChoice: 1
   spawnCooldown: 1

@@ -22,7 +22,7 @@ public class JumpableScript : MonoBehaviour
     private GameObject playerRef;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         playerRef = GameObject.FindGameObjectWithTag("Player");
@@ -54,7 +54,7 @@ public class JumpableScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player")) {
             var player = collision.gameObject.GetComponent<PlayerScript>();
 
-            jumperDisable();
+            Disable();
             
 
             //gameObject.SetActive(false);
@@ -69,37 +69,27 @@ public class JumpableScript : MonoBehaviour
     public void Disable() {
         this.gameObject.transform.SetParent(JumpablePoolManager.instance.transform);
         //this.gameObject.SetActive(false);
-        if(respawning) DestEvent?.Invoke(this.gameObject);
+        
         if (isSaver) {
             Destroy(this.gameObject);
             return;
+        } else {
+
+            if (respawning) {
+                myRespawner.currentPiece = null;
+                myRespawner.Respawn(tip);
+            }
+
+            //Debug.Log("Invoking dest event! My type is "+tip);
+            DestEvent?.Invoke(this.gameObject);
         }
-        if (this.gameObject.activeInHierarchy && (this.transform.position.y < playerRef.transform.position.y))
-        JumpablePoolManager.Deactivate(this.gameObject);
+        
+        
 
     }
 
 
-    private void jumperDisable() {
-        if (isSaver) {
-            Destroy(this.gameObject);
-            return;
-        }
-        if (respawning) DestEvent?.Invoke(this.gameObject);
-        JumpablePoolManager.Deactivate(this.gameObject);
-
-    }
-
-    public void moveEndDisable() {
-        JumpablePoolManager.Deactivate(this.gameObject);
-    }
-
-    public void unloadDisable() {
-        if (gameObject.activeInHierarchy && (this.transform.position.y < playerRef.transform.position.y)) {
-            JumpablePoolManager.Deactivate(this.gameObject);
-        }
-
-    }
+   
 
     public void Enable() {
         gameObject.SetActive(true);
@@ -116,6 +106,15 @@ public class JumpableScript : MonoBehaviour
         partSys.Play();
 
     }
+
+    public RespawnJumpableScript myRespawner;
+    public void SetAsRespawning(RespawnJumpableScript pos) {
+        rb.drag = 1000f;
+        respawning = true;
+        myRespawner = pos;
+
+    }
+
 
 
 

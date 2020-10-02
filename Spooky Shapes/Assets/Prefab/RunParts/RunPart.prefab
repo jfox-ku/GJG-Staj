@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1221357111}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.24, z: 0}
+  m_LocalPosition: {x: 0, y: -1.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5511218363200629368}
@@ -205,6 +205,7 @@ MonoBehaviour:
   - {fileID: 7145087116410247057}
   - {fileID: 5612923702404915548}
   - {fileID: 63913229624744282}
+  respawninglst: []
   set: {fileID: 11400000, guid: b93db61b37fc563418ef9b0db8622c8e, type: 2}
   TOP: {fileID: 2064328325330924176}
   BOT: {fileID: 3957213229189050722}
@@ -288,7 +289,7 @@ SpriteRenderer:
   m_Size: {x: 7.49, y: 4.42}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &107465196116579500

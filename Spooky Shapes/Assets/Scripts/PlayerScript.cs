@@ -196,12 +196,12 @@ public class PlayerScript : MonoBehaviour
             
         }else if (obje.CompareTag("Wall")) {
 
-            Debug.Log("Collided with wall!");
+            //Debug.Log("Collided with wall!");
             Vector2 direction = -(this.transform.position - obje.transform.position).normalized;
             direction.y =  0;    
 
             var wallPush = direction * (throwBase + throwMultiplier);
-            Debug.Log("Adding force "+wallPush);
+            //Debug.Log("Adding force "+wallPush);
             rb.AddForce(wallPush,ForceMode2D.Impulse);
             //rb.velocity = new Vector2(-rb.velocity.x * wallJumpMultiplier, rb.velocity.y);
             
@@ -271,7 +271,7 @@ public class PlayerScript : MonoBehaviour
 
         //Shake is weird right now. Need better numbers? (seems to overshoot and bug out)
         //CinemachineShakeScript.Instance.ShakeCamera(0.5f* jumpMultiplier, 0.2f);
-
+        //jumpable.Disable();
     }
 
    

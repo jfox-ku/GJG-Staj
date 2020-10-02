@@ -79,17 +79,27 @@ public class PieceCreatorScript : MonoBehaviour
 
     private IEnumerator MovePiece(GameObject obj, float duration) {
         var totalDuration = duration;
+        var js = obj.GetComponent<JumpableScript>();
+
         
         while(duration > 0) {
             duration -= Time.deltaTime;
+
+            if (!gameObject.activeInHierarchy) yield break;
+
             obj.transform.position = Vector2.Lerp(this.transform.position, target.transform.position, (totalDuration-duration)/totalDuration);
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForFixedUpdate();
         }
         //Debug.Log("Reached Target.");
-        if (obj.activeInHierarchy)
-            obj.GetComponent<JumpableScript>().moveEndDisable();
+        if(obj.activeInHierarchy && !js.respawning)
+        js.Disable();
+
     }
 
+
+    private void OnDestroy() {
+        StopAllCoroutines();
+    }
 
     public void Destroy() {
         StopAllCoroutines();
