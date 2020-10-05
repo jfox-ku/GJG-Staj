@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725164217}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.48, y: 3.79, z: 3.5}
-  m_LocalScale: {x: 1.609073, y: 2.9334352, z: 1}
+  m_LocalPosition: {x: 5.071, y: 3.79, z: 3.5}
+  m_LocalScale: {x: 0.21830535, y: 0.6186403, z: 0.21089278}
   m_Children: []
   m_Father: {fileID: 7740592542885482106}
   m_RootOrder: 1
@@ -71,8 +71,8 @@ SpriteRenderer:
   m_SortingLayerID: -1777405641
   m_SortingLayer: -1
   m_SortingOrder: 15
-  m_Sprite: {fileID: 3386093857890265411, guid: b8e6f67fb87f11f49963949fefba69af, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 8905856687671993115, guid: ff73973b3d3ea264ea4a53faf99d3788, type: 3}
+  m_Color: {r: 0.24381915, g: 0.3207547, b: 0.18004628, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -107,8 +107,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 857862117258439914}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.39, y: 3.76, z: 3.5}
-  m_LocalScale: {x: -2.0184739, y: 2.91093, z: 1}
+  m_LocalPosition: {x: -4.702, y: 3.76, z: 3.5}
+  m_LocalScale: {x: -0.22983523, y: 0.62523574, z: 0.214789}
   m_Children: []
   m_Father: {fileID: 7740592542885482106}
   m_RootOrder: 0
@@ -153,8 +153,8 @@ SpriteRenderer:
   m_SortingLayerID: -1777405641
   m_SortingLayer: -1
   m_SortingOrder: 15
-  m_Sprite: {fileID: 3386093857890265411, guid: b8e6f67fb87f11f49963949fefba69af, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 8905856687671993115, guid: ff73973b3d3ea264ea4a53faf99d3788, type: 3}
+  m_Color: {r: 0, g: 0.2711745, b: 0.2735849, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 7740592542885482104}
   - component: {fileID: 7740592542885482107}
   - component: {fileID: 7740592542885482105}
+  - component: {fileID: 1519788879}
   m_Layer: 10
   m_Name: PlayerConfiner
   m_TagString: Wall
@@ -307,6 +308,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 14.020887, y: 2.459793}
   m_EdgeRadius: 0
+--- !u!114 &1519788879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7740592542885482053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2c41d96dd33a4442bdbcd97a7834802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftWallSprite: {fileID: 2159719674041311664}
+  rightWallSprite: {fileID: 1725164219}
 --- !u!1 &7740592543029913514
 GameObject:
   m_ObjectHideFlags: 0

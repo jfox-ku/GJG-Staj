@@ -10,8 +10,8 @@ public class SetSO : ScriptableObject
     public List<ItemScript> ItemsList;
     public RunPartSO RewardPart;
 
-    public Color BGstartColor;
-    public Color BGendColor;
+
+    public List<Color> RotationColors;
     public float colorSwapDistanceMax;
 
     
@@ -30,4 +30,13 @@ public class SetSO : ScriptableObject
             item.reset();
         }
     }
+
+    public Color GetRandomColor() {
+
+        return RotationColors[Random.Range(0,RotationColors.Count)];
+    }
+
+
+
+
 }

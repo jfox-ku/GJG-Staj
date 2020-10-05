@@ -27,12 +27,6 @@ public class RunManagerScript : MonoBehaviour
     public bool allowLoad = true;
 
 
-
-    
-    public delegate void PartsDelegate();
-    public PartsDelegate upTrigger;
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +44,7 @@ public class RunManagerScript : MonoBehaviour
     private void Initialize() {
 
         player = GameObject.FindGameObjectWithTag("Player");
+        
         //Instantiate(testingPiece, new Vector2(0,-2f),Quaternion.identity);
 
         CVM = GameObject.FindObjectOfType<CinemachineVirtualCamera>();

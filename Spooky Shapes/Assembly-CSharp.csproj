@@ -84,6 +84,7 @@
     <Compile Include="Assets\Scripts\MainMenuScript.cs" />
     <Compile Include="Assets\Scripts\RunPartScript.cs" />
     <Compile Include="Assets\Scripts\UIScoreScript.cs" />
+    <Compile Include="Assets\PushForceItem.cs" />
     <Compile Include="Assets\Scripts\ItemS\ItemScript.cs" />
     <Compile Include="Assets\Scripts\InputScripts\MonoSingleton.cs" />
     <Compile Include="Assets\Scripts\InputScripts\DefaultInputManager.cs" />
@@ -95,7 +96,9 @@
     <Compile Include="Assets\Scripts\UpzoneScript.cs" />
     <Compile Include="Assets\Scripts\InventoryDisplayUI.cs" />
     <Compile Include="Assets\Scripts\CinemachineShakeScript.cs" />
-    <Compile Include="Assets\PushForceItem.cs" />
+    <Compile Include="Assets\WallsColorController.cs" />
+    <Compile Include="Assets\BackgroundRepeater.cs" />
+    <Compile Include="Assets\ColorManagerScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
